@@ -19,10 +19,10 @@ Open the URL shown by Vite. `npm run build` creates a production bundle in `dist
 - **Groups:** open UIUC Fashion Exchange, browse its inventory, view member profiles, and create or join a public group. UIUC Women Borrowing stays hidden from the nonmember demo account.
 - **Urgent Requests:** the **Try a scenario** buttons prefill a cookie catering request one week ahead, a digicam request for tomorrow, or a lighter request for today. Another demo account can comment, upvote, and offer a price with an attached listing. Choosing an offer starts a chat.
 - **Messages:** negotiate in the item-specific chat. Price proposals can be accepted or countered; accepting updates a pending demo deal.
-- **Other listing types:** create a sale, service, or lease-to-buy listing with **List an Item**. Lease-to-buy shows rental credit toward the buyout and a simulated refundable deposit.
-- **My Boros:** follow loan pickup and return, or accept and complete a sale, service, or lease. The Demo clock shows late estimates. **Reset demo** returns both marketplace and social data to seeds.
+- **Other listing types:** create a sale, service, or lease-to-buy listing with **List an Item**. Add up to three listing photos. Lease-to-buy shows rental credit toward the buyout and a simulated refundable deposit.
+- **My Boros:** follow loan pickup and return, or accept and complete a sale, service, or lease. Borrowers and lenders can add before-pickup and after-return condition photos; lease deals support the same record. The Demo clock shows late estimates. **Reset demo** returns both marketplace and social data to seeds.
 
-Everything runs in this browser's localStorage. The four students, profile photos, reviews, reputation figures, membership counts, listings, and transactions are fictional demo content. Profile photos are stock images, not photos of these fictional students. Paid checkout, deposits, buyout, and email verification are simulated; no money is charged and no university credentials are collected.
+Everything, including compressed uploaded photos, runs in this browser's localStorage. Uploaded photos are visible only in that browser and are not shared with other visitors. The four students, profile photos, reviews, reputation figures, membership counts, listings, and transactions are fictional demo content. Profile photos are stock images, not photos of these fictional students. Paid checkout, deposits, buyout, and email verification are simulated; no money is charged and no university credentials are collected.
 
 The item and group photos are remotely served Pexels stock images; the campus photo comes from the University of Illinois. See [PHOTO_SOURCES.md](PHOTO_SOURCES.md) for source pages; an internet connection is needed for photos.
 
