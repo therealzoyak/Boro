@@ -1,5 +1,7 @@
 # Boro
 
+![Boro penguin wordmark](public/boro-wordmark.svg)
+
 **Borrow More. Own Less.** A UIUC campus marketplace and community demo built with React, TypeScript, and Vite.
 
 ## Run
@@ -22,7 +24,7 @@ Open the URL shown by Vite. `npm run build` creates a production bundle in `dist
 
 Everything runs in this browser's localStorage. The four students, profile photos, reviews, reputation figures, membership counts, listings, and transactions are fictional demo content. Profile photos are stock images, not photos of these fictional students. Paid checkout, deposits, buyout, and email verification are simulated; no money is charged and no university credentials are collected.
 
-The item and group photos are remotely served Pexels stock images. See [PHOTO_SOURCES.md](PHOTO_SOURCES.md) for source pages; an internet connection is needed for photos.
+The item and group photos are remotely served Pexels stock images; the campus photo comes from the University of Illinois. See [PHOTO_SOURCES.md](PHOTO_SOURCES.md) for source pages; an internet connection is needed for photos.
 
 ## Production integration points
 
@@ -32,10 +34,12 @@ Campus Resources links to university pages. Their equipment remains under instit
 
 ## Campus level and marketplace filters
 
-Boro is the turquoise platform layer. The current subcampus is UIUC, with a separate Illinois blue and orange visual treatment and Main Quad photo. Groups, including UIUC Women Borrowing, live inside the UIUC campus navigation beneath the campus header. Explore has Rent, Buy, and Rent + buy filters. Listings can be free/paid rentals, sales, services, or rent with a buyout option.
+Boro is the turquoise platform layer. The current subcampus is UIUC, with a separate Illinois blue and orange visual treatment and Main Quad photo. Groups, including UIUC Women Borrowing, live inside the UIUC campus navigation beneath the campus header. Explore has Rent, Buy, and Rent + buy filters plus price sorting. Listings can be free/paid rentals, sales, services, or rent with a buyout option. New listings can specify a public campus spot, apartment lobby or entrance, or cafe meetup.
 
 ## Student services and urgent forum
 
 The UIUC Services tab includes student storefronts, quick cookie boxes, cookie catering with seven-day notice, a barber, photo sessions, and moving help. Service requests collect a date, quantity, and order notes; the seller accepts before a simulated checkout. The UIUC Urgent Forum is a separate feed for time-sensitive requests, comments, offers, and item-specific chat.
 
 The Boro header is platform-wide. Once inside UIUC, campus navigation contains Explore, Services, UIUC Groups, Urgent Forum, My Boros, and Messages.
+
+The [tech stack](TECH_STACK.md) distinguishes this browser demo from the recommended production architecture.

@@ -27,7 +27,7 @@ Boro displays remote stock photos from Pexels. Photos illustrate fictional items
 
 ## Campus photo and colors
 
-- [UIUC Main Quad](https://commons.wikimedia.org/wiki/File:UIUC_Main_Quad.jpg), Wikimedia Commons. Served through Wikimedia Special:FilePath in the UIUC campus banner.
+- [Main Quad gathering](https://newstudent.illinois.edu/parents/resourceguide), University of Illinois New Student & Family Experiences. Served from the university in the UIUC campus banner and directory card.
 - [Illinois brand color guidance](https://brand.illinois.edu/visual-identity/color), University of Illinois Urbana-Champaign. Used for the campus blue and orange palette.
 
 ## Student service demo photos

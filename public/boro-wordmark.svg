@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 104" role="img" aria-labelledby="title desc">
+  <title id="title">Boro</title>
+  <desc id="desc">The two penguin letter o's meet flippers beneath the r.</desc>
+  <g fill="none" fill-rule="evenodd">
+    <text x="0" y="82" fill="#078fa4" font-family="Arial, Helvetica, sans-serif" font-size="98" font-weight="800">B</text>
+    <text x="134" y="82" fill="#078fa4" font-family="Arial, Helvetica, sans-serif" font-size="98" font-weight="800">r</text>
+    <ellipse cx="101" cy="53" rx="27" ry="32" fill="#101923"/>
+    <ellipse cx="102" cy="55" rx="13" ry="20" fill="#fff"/>
+    <circle cx="107" cy="42" r="4.2" fill="#078fa4"/>
+    <path d="M126 48l9 5-9 4z" fill="#101923"/>
+    <ellipse cx="203" cy="53" rx="27" ry="32" fill="#101923"/>
+    <ellipse cx="202" cy="55" rx="13" ry="20" fill="#fff"/>
+    <circle cx="198" cy="42" r="4.2" fill="#078fa4"/>
+    <path d="M178 48l-9 5 9 4z" fill="#101923"/>
+    <path d="M119 68c9 6 18 10 28 12l5-2 6 4-4 5-8-1c-11-2-21-6-29-13z" fill="#101923"/>
+    <path d="M185 68c-9 6-18 10-28 12l-5-2-6 4 4 5 8-1c11-2 21-6 29-13z" fill="#101923"/>
+    <path d="M153 79l-2 5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+</svg>
