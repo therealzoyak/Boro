@@ -32,4 +32,10 @@ Campus Resources links to university pages. Their equipment remains under instit
 
 ## Campus level and marketplace filters
 
-Boro is the turquoise platform layer. The current subcampus is UIUC, with a separate Illinois blue and orange visual treatment and Main Quad photo. Groups, including UIUC Women Borrowing, live under the top Groups tab. Explore has Rent, Buy, and Rent + buy filters. Listings can be free/paid rentals, sales, services, or rent with a buyout option.
+Boro is the turquoise platform layer. The current subcampus is UIUC, with a separate Illinois blue and orange visual treatment and Main Quad photo. Groups, including UIUC Women Borrowing, live inside the UIUC campus navigation beneath the campus header. Explore has Rent, Buy, and Rent + buy filters. Listings can be free/paid rentals, sales, services, or rent with a buyout option.
+
+## Student services and urgent forum
+
+The UIUC Services tab includes student storefronts, quick cookie boxes, cookie catering with seven-day notice, a barber, photo sessions, and moving help. Service requests collect a date, quantity, and order notes; the seller accepts before a simulated checkout. The UIUC Urgent Forum is a separate feed for time-sensitive requests, comments, offers, and item-specific chat.
+
+The Boro header is platform-wide. Once inside UIUC, campus navigation contains Explore, Services, UIUC Groups, Urgent Forum, My Boros, and Messages.

@@ -29,3 +29,8 @@ Boro displays remote stock photos from Pexels. Photos illustrate fictional items
 
 - [UIUC Main Quad](https://commons.wikimedia.org/wiki/File:UIUC_Main_Quad.jpg), Wikimedia Commons. Served through Wikimedia Special:FilePath in the UIUC campus banner.
 - [Illinois brand color guidance](https://brand.illinois.edu/visual-identity/color), University of Illinois Urbana-Champaign. Used for the campus blue and orange palette.
+
+## Student service demo photos
+
+- [Chocolate chip cookies](https://www.pexels.com/photo/baked-cookies-2372537/) and [quick cookie box](https://www.pexels.com/photo/chocolate-chip-cookies-5846039/), Pexels.
+- [Barber haircut](https://www.pexels.com/photo/a-barber-cutting-the-hair-of-the-client-5568409/), Pexels.
