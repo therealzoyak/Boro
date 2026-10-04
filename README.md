@@ -13,7 +13,7 @@ npm run dev
 
 Open the URL shown by Vite. `npm run build` creates a production bundle in `dist/`.
 
-## What to show
+## What We Showed
 
 - **Explore:** search for “formal dress” and open Amina's free listing. The listing has a saved borrowing agreement, date checks, a simulated lender profile, and a free checkout path.
 - **Groups:** open UIUC Fashion Exchange, browse its inventory, view member profiles, and create or join a public group. UIUC Women Borrowing stays hidden from the nonmember demo account.
