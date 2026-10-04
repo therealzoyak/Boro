@@ -9,7 +9,7 @@
 ```bash
 npm install
 npm run dev
-```
+```. 
   
 Open the URL shown by Vite. `npm run build` creates a production bundle in `dist/`.
 
