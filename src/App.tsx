@@ -18,6 +18,12 @@ import {
   RotateCcw,
   MessageCircle,
   Bell,
+  Camera,
+  Shirt,
+  Sparkles,
+  Wrench,
+  Palette,
+  LayoutGrid,
 } from "lucide-react";
 import Extras from "./Extras";
 import { Photo, Portrait } from "./photos";
@@ -1292,26 +1298,82 @@ function App() {
           ) : (
             <>
               <section
-                className="campusBanner"
+                className={`campusBanner ${page === "browse" ? "marketHero" : "compactHero"}`}
                 aria-label="Current Boro campus"
               >
-                <div>
-                  <span className="campusKicker">
-                    YOUR CAMPUS, A LITTLE CLOSER
-                  </span>
-                  <strong>Borrow More. Own Less.</strong>
+                <div className="heroCopy">
+                  <span className="campusKicker">BORROW MORE. OWN LESS.</span>
+                  <strong>
+                    Big plans.
+                    <br />
+                    <span>Small student budget.</span>
+                  </strong>
                   <small>
-                    A camera for the weekend. Cookies for your club. A little
-                    help from someone nearby.
+                    Borrow the camera. Book the baker.
+                    <br />
+                    Find your people, right here at Illinois.
                   </small>
+                  <span className="heroLocation">
+                    <MapPin size={14} /> Made for the UIUC community
+                  </span>
                 </div>
-                <img
-                  src={`${import.meta.env.BASE_URL}images/campus.jpg`}
-                  alt="Students on the Main Quad at Illinois"
-                />
-                <span className="campusBadge">
-                  <MapPin size={14} /> UIUC
-                </span>
+                <div
+                  className="heroCollage"
+                  aria-label="Explore a few campus favorites"
+                >
+                  <span className="heroOrbit" aria-hidden="true" />
+                  <span className="heroNote" aria-hidden="true">
+                    good stuff.
+                    <br />
+                    good neighbors.
+                  </span>
+                  <button
+                    className="heroPick heroCamera"
+                    onClick={() => open("listing", "l3")}
+                    aria-label="Explore the camera kit"
+                  >
+                    <Photo
+                      title="Sony mirrorless camera kit"
+                      category="Camera & tripod"
+                      eager
+                    />
+                    <span>
+                      <b>A weekend behind the lens</b>
+                      <small>Camera kit · $12/day</small>
+                    </span>
+                  </button>
+                  <button
+                    className="heroPick heroCookies"
+                    onClick={() => setPage("services")}
+                    aria-label="Explore student bakers"
+                  >
+                    <Photo title="Quick cookie box" category="Events" eager />
+                    <span>
+                      <b>Baked by your neighbor</b>
+                      <small>Student-made · $12/box</small>
+                    </span>
+                  </button>
+                  <button
+                    className="heroPick heroDress"
+                    onClick={() => open("listing", "l14")}
+                    aria-label="Explore the free formal dress loan"
+                  >
+                    <Photo
+                      title="Black formal dress"
+                      category="Fashion"
+                      eager
+                    />
+                    <span>
+                      <b>One night. Zero dollars.</b>
+                      <small>Formal dress · free loan</small>
+                    </span>
+                  </button>
+                  <span className="heroSticker" aria-hidden="true">
+                    <Sparkles size={18} /> Less buying.
+                    <br />
+                    More living.
+                  </span>
+                </div>
               </section>
               <nav className="campusNav" aria-label="UIUC campus navigation">
                 {nav
@@ -1363,20 +1425,23 @@ function App() {
                     className="quickCategories"
                     aria-label="Popular categories"
                   >
-                    {[
-                      ["All categories", "Everything"],
-                      ["Camera & tripod", "Cameras"],
-                      ["Fashion", "Clothing"],
-                      ["Event gear", "Event essentials"],
-                      ["Tools", "Tools"],
-                      ["Art supplies", "Art & studio"],
-                    ].map(([value, label]) => (
+                    {(
+                      [
+                        ["All categories", "Everything", LayoutGrid],
+                        ["Camera & tripod", "Cameras", Camera],
+                        ["Fashion", "Clothing", Shirt],
+                        ["Event gear", "Event essentials", Sparkles],
+                        ["Tools", "Tools", Wrench],
+                        ["Art supplies", "Art & studio", Palette],
+                      ] as const
+                    ).map(([value, label, Icon]) => (
                       <button
                         key={value}
                         className={category === value ? "active" : ""}
                         aria-pressed={category === value}
                         onClick={() => setCategory(value)}
                       >
+                        <Icon size={17} aria-hidden="true" />
                         {label}
                       </button>
                     ))}
@@ -1477,7 +1542,10 @@ function App() {
                       </div>
                       <div className="grid">
                         {list.map((l) => (
-                          <article className="listingCard" key={l.id}>
+                          <article
+                            className={`listingCard ${l.mode === "free" ? "freeListing" : ""}`}
+                            key={l.id}
+                          >
                             <button
                               className="itemImage"
                               onClick={() => open("listing", l.id)}
