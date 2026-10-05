@@ -1,6 +1,6 @@
 # Demo photo sources
 
-Boro displays remote stock photos from Pexels. Photos illustrate fictional items and profiles; they do not depict the actual demo students or inventory. The app stores source IDs in `src/photos.tsx`.
+Boro bundles stock photos from Pexels. Photos illustrate fictional items and profiles; they do not depict the actual demo students or inventory. The app stores source IDs in `src/photos.tsx`; optimized copies live in `public/images/` so the demo can load without third-party image requests.
 
 | Use | Source |
 |---|---|
@@ -21,16 +21,23 @@ Boro displays remote stock photos from Pexels. Photos illustrate fictional items
 | Moving help | [Moving boxes](https://www.pexels.com/photo/couple-friends-glass-apartment-7464724/) |
 | Apartment group | [Moving boxes](https://www.pexels.com/photo/woman-carrying-boxes-in-new-apartment-4245989/) |
 | Maya sample portrait | [Student portrait](https://www.pexels.com/photo/cheerful-asian-woman-with-pen-studying-in-room-6237961/) |
-| Amina sample portrait | [Student portrait](https://www.pexels.com/photo/student-22915923/) |
+| Amina sample portrait | [Student on campus](https://www.pexels.com/photo/smiling-young-woman-in-campus-setting-31642823/) |
 | Jordan sample portrait | [Student portrait](https://www.pexels.com/photo/photo-of-a-man-in-a-gray-sweatshirt-smiling-while-looking-at-the-camera-7972568/) |
-| Leo sample portrait | [Student portrait](https://www.pexels.com/photo/portrait-of-a-smiling-young-man-in-a-classroom-18699972/) |
+| Leo sample portrait | [Casual portrait](https://www.pexels.com/photo/modern-headshot-of-smiling-young-man-in-casual-setting-30494318/) |
 
 ## Campus photo and colors
 
-- [Main Quad gathering](https://newstudent.illinois.edu/parents/resourceguide), University of Illinois New Student & Family Experiences. Served from the university in the UIUC campus banner and directory card.
+- [Main Quad gathering](https://newstudent.illinois.edu/parents/resourceguide), University of Illinois New Student & Family Experiences. An optimized local copy appears in the campus banner and directory card. This demo is a student project, not a University of Illinois service.
 - [Illinois brand color guidance](https://brand.illinois.edu/visual-identity/color), University of Illinois Urbana-Champaign. Used for the campus blue and orange palette.
 
 ## Student service demo photos
 
 - [Chocolate chip cookies](https://www.pexels.com/photo/baked-cookies-2372537/) and [quick cookie box](https://www.pexels.com/photo/chocolate-chip-cookies-5846039/), Pexels.
 - [Barber haircut](https://www.pexels.com/photo/a-barber-cutting-the-hair-of-the-client-5568409/), Pexels.
+
+- [Compact Canon camera](https://www.pexels.com/photo/a-person-holding-a-canon-powershot-camera-10931264/), Pexels.
+- [Outdoor photo session](https://www.pexels.com/photo/outdoor-fashion-photoshoot-with-photographer-30893319/), Pexels.
+
+## Fonts
+
+DM Sans and Manrope are bundled from their Fontsource packages under the SIL Open Font License. License texts are included in `public/fonts/`.

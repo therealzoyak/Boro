@@ -7,15 +7,15 @@
 | Frontend | React 19 and React DOM 19 | Renders the marketplace, campus directory, groups, forum, storefronts, chat, profiles, and order states. |
 | Language | TypeScript 5.9 in strict mode | Types the listings, bookings, service orders, groups, messages, and React components. |
 | Build and development | Vite 7 | Serves the local app and builds static assets into `dist/`. `npm run build` first checks TypeScript with `tsc -b`. |
-| Styling | Handwritten CSS in `src/style.css` | Responsive layout and separate Boro turquoise and UIUC blue/orange treatments. No CSS framework is installed. |
+| Styling | Handwritten CSS in `src/style.css` and `src/marketplace.css` | Responsive layout and separate Boro turquoise and UIUC blue/orange treatments. No CSS framework is installed. |
 | Icons | `lucide-react` | UI controls and navigation. |
-| Brand assets | `public/boro-wordmark.svg`, `public/boro-mark.svg` | Custom vector wordmark and browser icon. The two penguin-shaped o's meet flippers beneath the r. |
-| Photos | Remote Pexels images and a University of Illinois Main Quad image | Demo listing, storefront, profile, group, and campus imagery. Sources are recorded in `PHOTO_SOURCES.md`. Internet access is required to load them. |
+| Brand assets | `public/boro-wordmark.svg`, `public/boro-mark.svg` | Custom vector wordmark and browser icon. Local DM Sans and Manrope font files. The two penguin-shaped o's meet flippers beneath the r. |
+| Photos | Bundled Pexels images and a University of Illinois Main Quad image | Demo listing, storefront, profile, group, and campus imagery. Sources are recorded in `PHOTO_SOURCES.md`. Optimized assets are bundled under `public/images/`. |
 | State and data | React state plus browser `localStorage` | Persists two seeded demo stores (`boro-demo-v3` and `boro-extras-v2`) plus compressed listing and condition photos in one browser. These uploads are not shared across devices or visitors. Reset demo reseeds both. |
 | Demo seams | `src/demoServices.ts` | Replaceable wrappers for storage, account selection, and simulated checkout. |
 | Repository | Git and GitHub | Source control at [therealzoyak/Boro](https://github.com/therealzoyak/Boro). |
 
-The app is currently a **client-side prototype**. There is no backend, database, real sign-in, live messaging, payment processor, university verification, or deployed production URL. Account switching and payment confirmation are simulations. Private-group visibility is enforced only in the browser, so the demo must not be treated as a secure private marketplace.
+The app is currently a **client-side prototype**. The [public interactive demo](https://therealzoyak.github.io/Boro/) is deployed on GitHub Pages. There is no backend, database, real sign-in, live messaging, payment processor, or university verification. Account switching and payment confirmation are simulations. Private-group visibility is enforced only in the browser, so the demo must not be treated as a secure private marketplace.
 
 ### Current code layout
 

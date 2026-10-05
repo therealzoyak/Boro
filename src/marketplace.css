@@ -1,0 +1,1008 @@
+/* Consumer marketplace: open space, human profiles, and useful listing detail. */
+:root {
+  --ink: #243a3b;
+  --muted: #657676;
+  --brand: #067d82;
+  --line: #e2e9e7;
+  font-family: "DM Sans", Arial, sans-serif;
+  color: var(--ink);
+  background: #fff;
+}
+.app,
+.shell {
+  background: #fff;
+}
+.topbar {
+  height: 82px;
+  border-bottom: 1px solid var(--line);
+}
+.topinner {
+  max-width: 1280px;
+  padding: 0 32px;
+  gap: 32px;
+}
+.brand {
+  min-width: 110px;
+}
+.brandLogo {
+  width: 110px;
+  height: 46px;
+}
+.headerCampus {
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: none;
+  padding: 0 0 0 25px;
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  text-align: left;
+  column-gap: 8px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+.headerCampus svg {
+  grid-row: 1/3;
+  align-self: center;
+  color: var(--brand);
+}
+.headerCampus small {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 3px;
+}
+.topright {
+  gap: 16px;
+}
+.btn,
+.main .btn {
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 11px 17px;
+}
+.btn.primary,
+.main .btn.primary {
+  background: var(--brand);
+  color: #fff;
+}
+.btn.primary:hover,
+.main .btn.primary:hover {
+  background: #056469;
+}
+.main .btn.outline {
+  color: var(--brand);
+  border-color: #b9d5d2;
+}
+.accountLabel {
+  font-size: 12px;
+  color: var(--muted);
+}
+.accountLabel select {
+  font-size: 14px;
+  border-color: var(--line);
+  padding: 9px 26px 9px 12px;
+  font-weight: 600;
+}
+.avatarButton {
+  display: block;
+}
+.avatar,
+.exAvatar {
+  overflow: hidden;
+}
+.avatar img,
+.exAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.demoNotice {
+  max-width: 1216px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 0;
+  color: #6b7b7a;
+  font-size: 12px;
+}
+.demoNotice > span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.demoTag {
+  display: inline-block;
+  flex-shrink: 0;
+  background: #eaf6f3;
+  border-radius: 5px;
+  padding: 4px 7px;
+  color: #276c66;
+  font-size: 11px;
+  font-weight: 700;
+}
+.demoNotice button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  background: none;
+  padding: 5px 0;
+  font-size: 12px;
+  white-space: nowrap;
+  color: #607371;
+}
+.shell {
+  display: block;
+  max-width: 1280px;
+}
+.sidebar {
+  display: none;
+}
+.main {
+  padding: 8px 32px 36px;
+  color: var(--ink);
+}
+.main h1,
+.main h2,
+.main h3 {
+  color: var(--ink);
+}
+h1 {
+  font-size: 32px;
+  letter-spacing: -1px;
+  font-weight: 800;
+}
+h2 {
+  font-size: 23px;
+  letter-spacing: -0.6px;
+}
+h3 {
+  font-size: 18px;
+}
+.campusBanner,
+.page-requests .campusBanner,
+.page-services .campusBanner {
+  height: 145px;
+  border-radius: 14px;
+  padding: 24px 30px;
+  background: #edf7f4;
+  color: var(--ink);
+  box-shadow: none;
+  margin: 0 0 12px;
+  isolation: isolate;
+}
+.campusBanner:before {
+  display: none;
+}
+.campusBanner > div {
+  width: 63%;
+  gap: 7px;
+}
+.campusBanner > img {
+  left: auto;
+  right: 0;
+  width: 34%;
+  height: 100%;
+  object-position: center 54%;
+  mask-image: linear-gradient(90deg, transparent 0%, black 28%);
+}
+.campusKicker {
+  color: #3c766e;
+  font-size: 11px;
+  letter-spacing: 1.3px;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+}
+.campusBanner strong,
+.page-requests .campusBanner strong,
+.page-services .campusBanner strong {
+  font-size: 30px;
+  letter-spacing: -1px;
+}
+.campusBanner small,
+.page-requests .campusBanner small,
+.page-services .campusBanner small {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #55716d;
+}
+.campusBadge {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #ffffffef;
+  color: #304b47;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+.campusNav {
+  margin: 0 0 26px;
+  min-height: 56px;
+  gap: 18px;
+  padding: 0;
+  border-bottom: 1px solid var(--line);
+  overflow: auto;
+}
+.campusNav button,
+.campusNav button:nth-child(4) {
+  display: flex;
+  padding: 16px 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #657675;
+}
+.campusNav button.active,
+.campusNav button:nth-child(4).active {
+  color: var(--brand);
+  border-bottom-color: var(--brand);
+}
+.campusNav button:hover {
+  background: #f5faf8;
+}
+.main .eyebrow {
+  color: #56827c;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+}
+.pageHead {
+  margin-bottom: 22px;
+  align-items: flex-end;
+}
+.pageHead p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.pageHead .btn {
+  display: none;
+}
+.pageHead .eyebrow {
+  display: none;
+}
+.searchbar {
+  height: 54px;
+  border: 1px solid #bacdc8;
+  border-radius: 10px;
+  box-shadow: none;
+  color: var(--brand);
+  max-width: 760px;
+}
+.searchbar:focus-within {
+  box-shadow: 0 0 0 3px #067d8215;
+  border-color: var(--brand);
+}
+.searchbar input {
+  font-size: 16px;
+  color: var(--ink);
+}
+.searchbar input::placeholder {
+  color: #81948e;
+}
+.quickCategories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 16px 0 20px;
+}
+.quickCategories button {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 9px 15px;
+  font-size: 14px;
+  color: #59736e;
+}
+.quickCategories button.active {
+  background: #edf7f4;
+  border-color: #84bdb2;
+  color: #116e64;
+  font-weight: 700;
+}
+.quickCategories button:hover {
+  border-color: #84bdb2;
+}
+.marketSwitch {
+  border-radius: 8px;
+  padding: 4px;
+  margin: 0;
+  background: #f0f4f3;
+}
+.marketSwitch button {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 9px 18px;
+  color: #617873;
+}
+.marketSwitch button.active {
+  background: white;
+  box-shadow: 0 1px 5px #203e3512;
+  color: #136c66;
+}
+.filters {
+  margin: 16px 0 26px;
+  gap: 12px;
+}
+.filters label {
+  color: #5c756d;
+  font-size: 12px;
+  font-weight: 500;
+}
+.filters select {
+  font-size: 14px;
+  min-width: 170px;
+  padding: 10px 30px 10px 12px;
+  color: #39534b;
+  border-color: var(--line);
+}
+.filters .today {
+  font-size: 13px;
+  color: #526c62;
+}
+.sectionHeading {
+  margin-bottom: 18px;
+  justify-content: space-between;
+}
+.sectionHeading h2 {
+  color: var(--ink);
+}
+.sectionHeading span {
+  color: #799087;
+  font-size: 13px;
+}
+.grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px 20px;
+}
+.listingCard {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: none;
+  transition:
+    box-shadow 0.18s,
+    border-color 0.18s;
+}
+.listingCard:hover {
+  box-shadow: 0 6px 22px #243a3b0b;
+  border-color: #bdd4cd;
+}
+.itemImage {
+  height: 190px;
+  padding: 0;
+  overflow: hidden;
+  background: #edf2f0;
+}
+.itemImage em {
+  background: #fffffff2;
+  color: #38524b;
+  font-size: 11px;
+  padding: 6px 9px;
+  border-radius: 5px;
+  top: 12px;
+  left: 12px;
+  font-weight: 600;
+}
+.cardBody {
+  padding: 15px;
+}
+.listingCondition {
+  display: block;
+  font-size: 11px;
+  color: #7a8d85;
+  margin-bottom: 5px;
+}
+.cardTitle {
+  flex-direction: column;
+  gap: 7px;
+}
+.cardTitle button {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+  min-height: 42px;
+}
+.cardTitle strong {
+  font-size: 15px;
+  color: #216b5e;
+  font-weight: 700;
+  padding: 0;
+}
+.meta {
+  font-size: 12px;
+  color: #71877e;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+}
+.cardFooter {
+  margin-top: 13px;
+  padding-top: 12px;
+  border-top: 1px solid #edf2ef;
+}
+.lender {
+  font-size: 12px;
+  color: #476157;
+  font-weight: 500;
+  gap: 7px;
+}
+.memberBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #77958a;
+  font-size: 11px;
+}
+.cardFooter .arrow {
+  display: none;
+}
+.profileBio {
+  font-size: 15px;
+  color: #5c756a;
+  line-height: 1.6;
+  text-align: center;
+  margin: 22px 0;
+}
+.trustMini b {
+  font-size: 17px;
+  color: #36584c;
+}
+.profileModal > small {
+  display: block;
+  margin-top: 20px;
+  color: #82938b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.marketFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  margin-top: 50px;
+  padding-top: 22px;
+  font-size: 12px;
+  color: #7a8d83;
+}
+.marketFooter > div {
+  display: flex;
+  gap: 18px;
+}
+.marketFooter button,
+.marketFooter a {
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: none;
+  font-size: 12px;
+  color: #5c786b;
+}
+.serviceIntro {
+  background: #f1f8f4;
+  border: 1px solid #ddebe3;
+  border-left: 1px solid #ddebe3;
+  border-radius: 10px;
+  padding: 16px 20px;
+  gap: 7px;
+}
+.serviceIntro b {
+  font-size: 16px;
+  color: var(--ink);
+}
+.serviceIntro span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #687d72;
+}
+.storefrontGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.storefrontCard {
+  border-color: var(--line);
+  border-radius: 12px;
+  box-shadow: none;
+  color: var(--ink);
+}
+.storefrontCard:hover {
+  border-color: #95c0ad;
+  box-shadow: 0 5px 20px #243a3b0a;
+}
+.storefrontCover {
+  height: 160px;
+}
+.storefrontBody {
+  padding: 25px 17px 18px;
+}
+.storefrontBody .exAvatar {
+  width: 46px;
+  height: 46px;
+  top: -24px;
+  right: 17px;
+  border: 3px solid white;
+}
+.storefrontBody small {
+  font-size: 11px;
+  color: #638e7c;
+  letter-spacing: 0.2px;
+  text-transform: none;
+}
+.storefrontBody b {
+  font-size: 17px;
+  line-height: 1.4;
+  margin-top: 6px;
+}
+.storefrontBody p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #6d8478;
+  min-height: 100px;
+  margin: 10px 0 14px;
+}
+.storefrontBody > span:last-child {
+  font-size: 12px;
+  color: #427563;
+}
+.serviceCard {
+  border-color: var(--line);
+  border-radius: 12px;
+  box-shadow: none;
+}
+.serviceCard p {
+  font-size: 14px;
+  line-height: 1.55;
+}
+.serviceCard .eyebrow {
+  font-size: 11px;
+}
+.groupCard {
+  border-color: var(--line);
+  box-shadow: none;
+}
+.groupCard p,
+.extraLead {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #6b7f76;
+}
+.modalContent {
+  color: var(--ink);
+}
+.modalContent p,
+.modalContent label {
+  font-size: 14px;
+  line-height: 1.55;
+}
+.modalContent h2 {
+  font-size: 26px;
+}
+.detailHero {
+  height: 280px;
+}
+.profileLine small {
+  font-size: 12px;
+}
+.detailGrid span,
+.detailGrid b,
+.ruleBox p {
+  font-size: 13px;
+}
+input,
+textarea,
+select {
+  accent-color: var(--brand);
+}
+@media (max-width: 1100px) {
+  .grid,
+  .storefrontGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .headerCampus {
+    padding-left: 20px;
+  }
+  .demoNotice {
+    margin: 0 32px;
+  }
+  .storefrontBody p {
+    min-height: 105px;
+  }
+}
+@media (max-width: 850px) {
+  .headerCampus {
+    display: none;
+  }
+  .grid,
+  .storefrontGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .sidebar {
+    display: none;
+  }
+  .campusNav {
+    gap: 15px;
+    margin: 0 0 22px;
+  }
+  .campusNav button {
+    display: flex;
+  }
+  .bottomNav {
+    display: none;
+  }
+  .main {
+    padding-bottom: 32px;
+  }
+  .demoNotice > span {
+    align-items: flex-start;
+  }
+  .demoNotice {
+    align-items: flex-start;
+  }
+  .campusBanner > div {
+    width: 70%;
+  }
+  .campusBanner > img {
+    width: 30%;
+  }
+  .storefrontBody p {
+    min-height: 65px;
+  }
+}
+@media (max-width: 620px) {
+  .topbar {
+    height: 68px;
+  }
+  .topinner {
+    padding: 0 18px;
+    gap: 12px;
+  }
+  .brand {
+    min-width: 86px;
+  }
+  .brandLogo {
+    width: 86px;
+    height: 42px;
+  }
+  .topright {
+    gap: 8px;
+  }
+  .topList {
+    display: none;
+  }
+  .accountLabel {
+    font-size: 0;
+    gap: 0;
+  }
+  .accountLabel select {
+    font-size: 12px;
+    max-width: 128px;
+    padding: 8px;
+  }
+  .avatarButton .avatar {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .demoNotice {
+    margin: 0 18px;
+    padding: 10px 0;
+    font-size: 11px;
+  }
+  .demoNotice > span {
+    display: block;
+    line-height: 1.5;
+  }
+  .demoTag {
+    margin-right: 7px;
+    font-size: 10px;
+  }
+  .demoNotice button {
+    font-size: 0;
+    padding: 3px;
+  }
+  .demoNotice button svg {
+    width: 17px;
+    height: 17px;
+  }
+  .main {
+    padding: 4px 18px 28px;
+  }
+  .campusBanner,
+  .page-services .campusBanner,
+  .page-requests .campusBanner {
+    height: auto;
+    min-height: 128px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  .campusBanner > div {
+    width: 100%;
+    max-width: 80%;
+    gap: 7px;
+  }
+  .campusBanner > img {
+    width: 35%;
+    opacity: 0.35;
+  }
+  .campusBanner strong,
+  .page-services .campusBanner strong,
+  .page-requests .campusBanner strong {
+    font-size: 25px;
+  }
+  .campusBanner small,
+  .page-services .campusBanner small,
+  .page-requests .campusBanner small {
+    font-size: 12px;
+    max-width: 100%;
+  }
+  .campusKicker {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  .campusBadge {
+    display: none;
+  }
+  .campusNav {
+    margin: 0 0 22px;
+    gap: 16px;
+  }
+  .campusNav button,
+  .campusNav button:nth-child(4) {
+    font-size: 13px;
+    padding: 13px 0;
+  }
+  .campusNav svg {
+    display: none;
+  }
+  h1 {
+    font-size: 27px;
+  }
+  h2 {
+    font-size: 21px;
+  }
+  .pageHead {
+    margin-bottom: 18px;
+  }
+  .pageHead p {
+    font-size: 14px;
+  }
+  .searchbar {
+    height: 50px;
+  }
+  .searchbar input {
+    font-size: 14px;
+  }
+  .quickCategories {
+    flex-wrap: nowrap;
+    overflow: auto;
+    margin: 13px 0 17px;
+    padding-bottom: 3px;
+    gap: 7px;
+  }
+  .quickCategories button {
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+  .marketSwitch {
+    width: 100%;
+  }
+  .marketSwitch button {
+    font-size: 13px;
+  }
+  .filters {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .filters label {
+    width: calc(50% - 5px);
+    font-size: 11px;
+  }
+  .filters select {
+    min-width: 0;
+    width: 100%;
+    font-size: 13px;
+    padding: 9px;
+  }
+  .filters .today {
+    width: auto;
+    margin: 2px 0;
+    font-size: 12px;
+  }
+  .grid {
+    gap: 16px 12px;
+  }
+  .itemImage {
+    height: 155px;
+  }
+  .itemImage em {
+    font-size: 9px;
+    padding: 5px 6px;
+    top: 8px;
+    left: 8px;
+  }
+  .cardBody {
+    padding: 11px;
+  }
+  .cardTitle button {
+    font-size: 13px;
+    min-height: 38px;
+  }
+  .cardTitle strong {
+    font-size: 13px;
+  }
+  .meta {
+    font-size: 10px;
+  }
+  .meta svg {
+    width: 11px;
+  }
+  .meta svg:nth-of-type(2),
+  .meta span {
+    display: none;
+  }
+  .meta {
+    row-gap: 4px;
+  }
+  .lender {
+    font-size: 10px;
+    gap: 5px;
+  }
+  .lender .avatar,
+  .lender .exAvatar {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .memberBadge {
+    display: none;
+  }
+  .listingCondition {
+    font-size: 10px;
+  }
+  .marketFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 32px;
+    padding-top: 20px;
+    font-size: 11px;
+  }
+  .marketFooter > div {
+    gap: 18px;
+  }
+  .storefrontGrid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .storefrontCover {
+    height: 180px;
+  }
+  .storefrontBody {
+    padding: 24px 18px 18px;
+  }
+  .storefrontBody p {
+    min-height: 0;
+    font-size: 14px;
+  }
+  .serviceIntro b {
+    font-size: 15px;
+  }
+  .serviceIntro span {
+    font-size: 13px;
+  }
+  .sectionHeading {
+    gap: 8px;
+  }
+  .sectionHeading > span {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .detailHero {
+    height: 220px;
+  }
+  .modalContent {
+    padding: 22px;
+  }
+  .detailGrid {
+    gap: 15px;
+  }
+  .trustMini b {
+    font-size: 14px;
+  }
+  .campusDirectoryCard img {
+    max-height: 220px;
+  }
+}
+/* Keep the inventory within the first viewport, with advanced filters on demand. */
+.campusBanner,
+.page-requests .campusBanner,
+.page-services .campusBanner {
+  height: 112px;
+  padding: 18px 25px;
+}
+.campusBanner strong,
+.page-requests .campusBanner strong,
+.page-services .campusBanner strong {
+  font-size: 27px;
+}
+.campusBanner small,
+.page-requests .campusBanner small,
+.page-services .campusBanner small {
+  font-size: 13px;
+}
+.pageHead {
+  margin-bottom: 17px;
+}
+.quickCategories {
+  margin: 14px 0 16px;
+}
+.filterDetails {
+  margin: 14px 0 24px;
+  font-size: 13px;
+  color: #527267;
+}
+.filterDetails summary {
+  cursor: pointer;
+  width: fit-content;
+  padding: 4px 0;
+  font-weight: 600;
+}
+.filterDetails summary span {
+  font-weight: 400;
+  color: #8a9c93;
+  margin-left: 8px;
+  font-size: 12px;
+}
+.filterDetails .filters {
+  padding: 15px;
+  background: #f7faf8;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin: 10px 0 0;
+}
+@media (max-width: 620px) {
+  .campusBanner,
+  .page-services .campusBanner,
+  .page-requests .campusBanner {
+    min-height: 94px;
+    padding: 16px 18px;
+  }
+  .campusBanner > div {
+    max-width: 100%;
+  }
+  .campusBanner > img {
+    display: none;
+  }
+  .campusBanner strong,
+  .page-services .campusBanner strong,
+  .page-requests .campusBanner strong {
+    font-size: 22px;
+    white-space: nowrap;
+  }
+  .campusBanner small,
+  .page-services .campusBanner small,
+  .page-requests .campusBanner small {
+    display: none;
+  }
+  .campusNav {
+    margin-bottom: 20px;
+  }
+  .filterDetails {
+    margin: 12px 0 20px;
+  }
+  .filterDetails summary span {
+    font-size: 11px;
+    margin-left: 5px;
+  }
+  .filterDetails .filters {
+    padding: 12px;
+  }
+}
