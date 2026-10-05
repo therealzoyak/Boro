@@ -9,9 +9,9 @@
 | Build and development | Vite 7 | Serves the local app and builds static assets into `dist/`. `npm run build` first checks TypeScript with `tsc -b`. |
 | Styling | Handwritten CSS in `src/style.css` and `src/marketplace.css` | Responsive layout and separate Boro turquoise and UIUC blue/orange treatments. No CSS framework is installed. |
 | Icons | `lucide-react` | UI controls and navigation. |
-| Brand assets | `public/boro-wordmark.svg`, `public/boro-mark.svg` | Custom vector wordmark and browser icon. Local DM Sans and Manrope font files. The two penguin-shaped o's meet flippers beneath the r. |
+| Brand assets | `public/boro-wordmark.svg`, `public/boro-mark.svg` | Custom vector wordmark and browser icon. Local DM Sans, Manrope, and Bricolage Grotesque font files. The two penguin-shaped o's meet flippers beneath the r. |
 | Photos | Bundled Pexels images and a University of Illinois Main Quad image | Demo listing, storefront, profile, group, and campus imagery. Sources are recorded in `PHOTO_SOURCES.md`. Optimized assets are bundled under `public/images/`. |
-| State and data | React state plus browser `localStorage` | Persists two seeded demo stores (`boro-demo-v3` and `boro-extras-v2`) plus compressed listing and condition photos in one browser. These uploads are not shared across devices or visitors. Reset demo reseeds both. |
+| State and data | React state plus browser `localStorage` | Persists account-specific saved items (`boro-saved-v1`), two seeded demo stores (`boro-demo-v3` and `boro-extras-v2`) plus compressed listing and condition photos in one browser. These uploads are not shared across devices or visitors. Reset demo reseeds both and clears saved items. |
 | Demo seams | `src/demoServices.ts` | Replaceable wrappers for storage, account selection, and simulated checkout. |
 | Repository | Git and GitHub | Source control at [therealzoyak/Boro](https://github.com/therealzoyak/Boro). |
 
@@ -22,6 +22,7 @@ The app is currently a **client-side prototype**. The [public interactive demo](
 - `src/App.tsx`: Boro-to-UIUC navigation, rentals, loan agreements, date validation, borrower/lender state, and the shared shell.
 - `src/Extras.tsx`: campus groups, urgent forum, offers, services, storefronts, sales, rent-to-buy, messages, and service orders.
 - `src/photos.tsx`: photo selection and image fallback components.
+- `src/MarketplaceCard.tsx`: shared listing cards and account-specific saved-item state.
 - `src/demoServices.ts`: small integration seam for replacing the demo services.
 - `public/`: wordmark and favicon.
 - `index.html`: document title, viewport, theme color, and favicon.

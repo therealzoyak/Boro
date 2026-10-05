@@ -24,8 +24,13 @@ import {
   Wrench,
   Palette,
   LayoutGrid,
+  Heart,
 } from "lucide-react";
 import Extras from "./Extras";
+import MarketplaceCard, {
+  useSavedListings,
+  resetSavedListings,
+} from "./MarketplaceCard";
 import { Photo, Portrait } from "./photos";
 import {
   ConditionEvidence,
@@ -201,7 +206,17 @@ const categories = [
   "Apartment",
   "Other",
 ];
-const featuredListingIds = ["l3", "l14", "l8", "l16", "l6", "l4", "l1", "l15"];
+const featuredListingIds = [
+  "l3",
+  "l14",
+  "l6",
+  "l5",
+  "l8",
+  "l16",
+  "l4",
+  "l1",
+  "l15",
+];
 const featuredRank = (id: string) => {
   const rank = featuredListingIds.indexOf(id);
   return rank < 0 ? featuredListingIds.length : rank;
@@ -576,6 +591,8 @@ function Avatar({ user, size = 36 }: { user: User; size?: number }) {
 function App() {
   const [data, setData] = useState<Data>(load);
   const [account, setAccount] = useState("maya");
+  const { saved } = useSavedListings(account);
+  const [savedOnly, setSavedOnly] = useState(false);
   const [community, setCommunity] = useState<Audience>("all");
   const [page, setPage] = useState("browse");
   const [marketView, setMarketView] = useState<"rent" | "buy" | "both">("both");
@@ -647,6 +664,8 @@ function App() {
   }, [data.clock, data.bookings]);
   const resetDemo = () => {
     setData(initial());
+    resetSavedListings();
+    setSavedOnly(false);
     window.dispatchEvent(new Event("boro:reset"));
     setAccount("maya");
     setCommunity("all");
@@ -712,6 +731,7 @@ function App() {
   const list = data.listings
     .filter(
       (l) =>
+        (!savedOnly || saved.includes(l.id)) &&
         visible(l.audience) &&
         (community === "all" ? l.audience === "all" : l.audience === "women") &&
         (!search ||
@@ -1221,7 +1241,7 @@ function App() {
               className="btn primary topList"
               onClick={() => setListMenu(true)}
             >
-              <Plus size={16} /> List an Item
+              <Plus size={16} /> List an item
             </button>
             <label className="accountLabel">
               Try as{" "}
@@ -1251,8 +1271,8 @@ function App() {
       </header>
       <div className="demoNotice">
         <span>
-          <span className="demoTag">Interactive demo</span> Explore as a
-          student. Listings, profiles, verification, and payments are simulated.
+          <span className="demoTag">Demo campus</span> Sample students and
+          listings · verification and payments are simulated.
         </span>
         <button onClick={resetDemo}>
           <RotateCcw size={14} /> Reset demo
@@ -1298,82 +1318,28 @@ function App() {
           ) : (
             <>
               <section
-                className={`campusBanner ${page === "browse" ? "marketHero" : "compactHero"}`}
+                className="campusBanner"
                 aria-label="Current Boro campus"
               >
-                <div className="heroCopy">
-                  <span className="campusKicker">BORROW MORE. OWN LESS.</span>
-                  <strong>
-                    Big plans.
-                    <br />
-                    <span>Small student budget.</span>
-                  </strong>
+                <img
+                  src={`${import.meta.env.BASE_URL}images/campus.jpg`}
+                  alt="Students on the Main Quad at Illinois"
+                />
+                <div className="campusCopy">
+                  <span className="campusKicker">
+                    YOUR CAMPUS. YOUR COMMUNITY.
+                  </span>
+                  <strong>Borrow More. Own Less.</strong>
                   <small>
-                    Borrow the camera. Book the baker.
+                    A camera for class. A dress for formal. Cookies for your
+                    club.
                     <br />
-                    Find your people, right here at Illinois.
+                    Good things, from people around you.
                   </small>
-                  <span className="heroLocation">
-                    <MapPin size={14} /> Made for the UIUC community
-                  </span>
                 </div>
-                <div
-                  className="heroCollage"
-                  aria-label="Explore a few campus favorites"
-                >
-                  <span className="heroOrbit" aria-hidden="true" />
-                  <span className="heroNote" aria-hidden="true">
-                    good stuff.
-                    <br />
-                    good neighbors.
-                  </span>
-                  <button
-                    className="heroPick heroCamera"
-                    onClick={() => open("listing", "l3")}
-                    aria-label="Explore the camera kit"
-                  >
-                    <Photo
-                      title="Sony mirrorless camera kit"
-                      category="Camera & tripod"
-                      eager
-                    />
-                    <span>
-                      <b>A weekend behind the lens</b>
-                      <small>Camera kit · $12/day</small>
-                    </span>
-                  </button>
-                  <button
-                    className="heroPick heroCookies"
-                    onClick={() => setPage("services")}
-                    aria-label="Explore student bakers"
-                  >
-                    <Photo title="Quick cookie box" category="Events" eager />
-                    <span>
-                      <b>Baked by your neighbor</b>
-                      <small>Student-made · $12/box</small>
-                    </span>
-                  </button>
-                  <button
-                    className="heroPick heroDress"
-                    onClick={() => open("listing", "l14")}
-                    aria-label="Explore the free formal dress loan"
-                  >
-                    <Photo
-                      title="Black formal dress"
-                      category="Fashion"
-                      eager
-                    />
-                    <span>
-                      <b>One night. Zero dollars.</b>
-                      <small>Formal dress · free loan</small>
-                    </span>
-                  </button>
-                  <span className="heroSticker" aria-hidden="true">
-                    <Sparkles size={18} /> Less buying.
-                    <br />
-                    More living.
-                  </span>
-                </div>
+                <span className="campusBadge">
+                  <MapPin size={14} /> ILLINOIS / UIUC
+                </span>
               </section>
               <nav className="campusNav" aria-label="UIUC campus navigation">
                 {nav
@@ -1396,30 +1362,32 @@ function App() {
               </nav>
               {page === "browse" && (
                 <>
-                  <div className="pageHead">
-                    <div>
-                      <div className="eyebrow">THE CAMPUS MARKETPLACE</div>
-                      <h1>What do you need today?</h1>
-                      <p>
-                        Borrow for a day, buy secondhand, or find a student with
-                        the right skills.
-                      </p>
+                  <div className="browseIntro">
+                    <div className="pageHead">
+                      <div>
+                        <div className="eyebrow">THE CAMPUS MARKETPLACE</div>
+                        <h1>What do you need today?</h1>
+                        <p>
+                          Borrow something good. Buy secondhand. Support a
+                          student maker.
+                        </p>
+                      </div>
+                      <button
+                        className="btn primary"
+                        onClick={() => setListMenu(true)}
+                      >
+                        <Plus size={17} /> List an item
+                      </button>
                     </div>
-                    <button
-                      className="btn primary"
-                      onClick={() => setListMenu(true)}
-                    >
-                      <Plus size={17} /> List an item
-                    </button>
-                  </div>
-                  <div className="searchbar">
-                    <Search size={19} />
-                    <input
-                      aria-label="Search listings"
-                      value={search}
-                      onChange={(e) => setSearch(e.target.value)}
-                      placeholder="Try “camera”, “formal dress”, or “projector”"
-                    />
+                    <div className="searchbar">
+                      <Search size={19} />
+                      <input
+                        aria-label="Search listings"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Try “camera”, “formal dress”, or “projector”"
+                      />
+                    </div>
                   </div>
                   <div
                     className="quickCategories"
@@ -1446,90 +1414,107 @@ function App() {
                       </button>
                     ))}
                   </div>
-                  <div
-                    className="marketSwitch"
-                    role="group"
-                    aria-label="Listing type"
-                  >
-                    {(["both", "rent", "buy"] as const).map((v) => (
-                      <button
-                        key={v}
-                        className={marketView === v ? "active" : ""}
-                        aria-pressed={marketView === v}
-                        onClick={() => setMarketView(v)}
-                      >
-                        {v === "both"
-                          ? "All listings"
-                          : v === "rent"
-                            ? "Borrow & rent"
-                            : "Buy"}
-                      </button>
-                    ))}
-                  </div>
-                  <details className="filterDetails">
-                    <summary>
-                      More filters{" "}
-                      <span>Price, pickup area & availability</span>
-                    </summary>
-                    <div className="filters">
-                      <label>
-                        Category
-                        <select
-                          value={category}
-                          onChange={(e) => setCategory(e.target.value)}
+                  <div className="browseControls">
+                    <button
+                      className={`savedFilter ${savedOnly ? "active" : ""}`}
+                      onClick={() => setSavedOnly(!savedOnly)}
+                      aria-pressed={savedOnly}
+                    >
+                      <Heart
+                        size={16}
+                        fill={savedOnly ? "currentColor" : "none"}
+                      />{" "}
+                      Saved{saved.length ? ` (${saved.length})` : ""}
+                    </button>
+                    <div
+                      className="marketSwitch"
+                      role="group"
+                      aria-label="Listing type"
+                    >
+                      {(["both", "rent", "buy"] as const).map((v) => (
+                        <button
+                          key={v}
+                          className={marketView === v ? "active" : ""}
+                          aria-pressed={marketView === v}
+                          onClick={() => setMarketView(v)}
                         >
-                          <option>All categories</option>
-                          {categories.map((x) => (
-                            <option key={x}>{x}</option>
-                          ))}
-                        </select>
-                      </label>
-                      <label>
-                        Price
-                        <select
-                          value={mode}
-                          onChange={(e) => setMode(e.target.value)}
-                        >
-                          <option>Any price</option>
-                          <option>Free loans</option>
-                          <option>Paid rentals</option>
-                        </select>
-                      </label>
-                      <label>
-                        Pickup zone
-                        <select
-                          value={zone}
-                          onChange={(e) => setZone(e.target.value)}
-                        >
-                          <option>Any zone</option>
-                          {zones.map((x) => (
-                            <option key={x}>{x}</option>
-                          ))}
-                        </select>
-                      </label>
-                      <label>
-                        Sort by
-                        <select
-                          value={sortBy}
-                          onChange={(e) =>
-                            setSortBy(e.target.value as typeof sortBy)
-                          }
-                        >
-                          <option value="recommended">Recommended</option>
-                          <option value="price-low">Price: low to high</option>
-                          <option value="price-high">Price: high to low</option>
-                        </select>
-                      </label>
-                      <label className="today">
-                        <input
-                          type="checkbox"
-                          checked={timing}
-                          onChange={(e) => setTiming(e.target.checked)}
-                        />{" "}
-                        Available today
-                      </label>
+                          {v === "both"
+                            ? "All listings"
+                            : v === "rent"
+                              ? "Borrow & rent"
+                              : "Buy"}
+                        </button>
+                      ))}
                     </div>
-                  </details>
+                    <details className="filterDetails">
+                      <summary>
+                        More filters{" "}
+                        <span>Price, pickup area & availability</span>
+                      </summary>
+                      <div className="filters">
+                        <label>
+                          Category
+                          <select
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                          >
+                            <option>All categories</option>
+                            {categories.map((x) => (
+                              <option key={x}>{x}</option>
+                            ))}
+                          </select>
+                        </label>
+                        <label>
+                          Price
+                          <select
+                            value={mode}
+                            onChange={(e) => setMode(e.target.value)}
+                          >
+                            <option>Any price</option>
+                            <option>Free loans</option>
+                            <option>Paid rentals</option>
+                          </select>
+                        </label>
+                        <label>
+                          Pickup zone
+                          <select
+                            value={zone}
+                            onChange={(e) => setZone(e.target.value)}
+                          >
+                            <option>Any zone</option>
+                            {zones.map((x) => (
+                              <option key={x}>{x}</option>
+                            ))}
+                          </select>
+                        </label>
+                        <label>
+                          Sort by
+                          <select
+                            value={sortBy}
+                            onChange={(e) =>
+                              setSortBy(e.target.value as typeof sortBy)
+                            }
+                          >
+                            <option value="recommended">Recommended</option>
+                            <option value="price-low">
+                              Price: low to high
+                            </option>
+                            <option value="price-high">
+                              Price: high to low
+                            </option>
+                          </select>
+                        </label>
+                        <label className="today">
+                          <input
+                            type="checkbox"
+                            checked={timing}
+                            onChange={(e) => setTiming(e.target.checked)}
+                          />{" "}
+                          Available today
+                        </label>
+                      </div>
+                    </details>
+                  </div>
                   {marketView !== "buy" && (
                     <>
                       <div className="sectionHeading">
@@ -1542,69 +1527,27 @@ function App() {
                       </div>
                       <div className="grid">
                         {list.map((l) => (
-                          <article
-                            className={`listingCard ${l.mode === "free" ? "freeListing" : ""}`}
+                          <MarketplaceCard
                             key={l.id}
-                          >
-                            <button
-                              className="itemImage"
-                              onClick={() => open("listing", l.id)}
-                              aria-label={`View ${l.title}`}
-                            >
-                              <Photo
-                                title={l.title}
-                                category={l.category}
-                                fallback={l.emoji}
-                                src={l.photos?.[0]}
-                              />
-                              <em>
-                                {l.mode === "free"
-                                  ? "Free to borrow"
-                                  : l.category}
-                              </em>
-                            </button>
-                            <div className="cardBody">
-                              <span className="listingCondition">
-                                {l.condition} condition
-                              </span>
-                              <div className="cardTitle">
-                                <button onClick={() => open("listing", l.id)}>
-                                  {l.title}
-                                </button>
-                                <strong>
-                                  {l.mode === "free"
-                                    ? "Free loan"
-                                    : `${money(l.rate)}/day`}
-                                </strong>
-                              </div>
-                              <div className="meta">
-                                <MapPin size={14} />
-                                {l.zone}
-                                <span>·</span>
-                                <CalendarDays size={14} />
-                                {availableToday(l) ? "Today" : "Upcoming"}
-                              </div>
-                              <div className="cardFooter">
-                                <button
-                                  className="lender"
-                                  onClick={() => open("profile", l.owner)}
-                                >
-                                  <Avatar user={who(l.owner)} size={32} />
-                                  {who(l.owner).name}
-                                </button>
-                                <span className="memberBadge">
-                                  <ShieldCheck size={14} /> UIUC
-                                </span>
-                                <button
-                                  className="arrow"
-                                  aria-label={`View ${l.title}`}
-                                  onClick={() => open("listing", l.id)}
-                                >
-                                  <ChevronRight size={19} />
-                                </button>
-                              </div>
-                            </div>
-                          </article>
+                            id={l.id}
+                            account={account}
+                            title={l.title}
+                            category={l.category}
+                            description={l.description}
+                            condition={l.condition}
+                            photo={l.photos?.[0]}
+                            owner={l.owner}
+                            ownerName={who(l.owner).name}
+                            ownerDetail={who(l.owner).year}
+                            zone={l.zone}
+                            kind={l.mode === "free" ? "free" : "rent"}
+                            amount={l.rate}
+                            availability={
+                              availableToday(l) ? "Available today" : undefined
+                            }
+                            onOpen={() => open("listing", l.id)}
+                            onProfile={() => open("profile", l.owner)}
+                          />
                         ))}
                       </div>
                       {list.length === 0 && (
@@ -1947,6 +1890,7 @@ function App() {
                 account={account}
                 now={data.clock}
                 marketView={marketView}
+                savedOnly={savedOnly}
                 search={search}
                 category={category}
                 modeFilter={mode}

@@ -26,7 +26,7 @@ Built by a **team of four** for the **Hack to the Future** hackathon, responding
 
 | Experience | In the demo |
 | --- | --- |
-| **Borrow & rent** | Free loans and paid rentals, category and location filters, date validation, borrowing agreements, pickup and return confirmation, and condition photos. |
+| **Borrow & rent** | Free loans and paid rentals, category and location filters, saved listings per demo account, date validation, borrowing agreements, pickup and return confirmation, and condition photos. |
 | **Buy & try before buying** | Secondhand listings and lease-to-buy flows with rental credit and a simulated refundable deposit. |
 | **Student storefronts** | Bakers, barbers, photographers, and moving help; requests include a preferred time, quantity, and order details. |
 | **Groups & clubs** | Shared inventories, group feeds, member profiles, and public or private borrowing circles. |
@@ -38,6 +38,10 @@ Built by a **team of four** for the **Hack to the Future** hackathon, responding
 ### Student businesses
 
 ![Student storefronts for baking, barbering, photography, and moving help](docs/images/student-storefronts.png)
+
+### Campus conversations
+
+![Posts from campus borrowing circles and the student help board](docs/images/campus-community.png)
 
 ### Clear borrowing agreements
 

@@ -1,86 +1,109 @@
-/* Consumer marketplace: open space, human profiles, and useful listing detail. */
+/* Illinois is the campus identity. Orange carries actions; blue grounds the community. */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/bricolage-grotesque-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2");
+}
 :root {
-  --ink: #243a3b;
-  --muted: #657676;
-  --brand: #067d82;
-  --line: #e2e9e7;
+  --ink: #13294b;
+  --muted: #63718a;
+  --brand: #13294b;
+  --orange: #ff5f05;
+  --line: #dde3ed;
+  --canvas: #f5f6fa;
   font-family: "DM Sans", Arial, sans-serif;
   color: var(--ink);
-  background: #fff;
+  background: var(--canvas);
 }
 .app,
 .shell {
-  background: #fff;
+  background: var(--canvas);
 }
 .topbar {
-  height: 82px;
+  height: 78px;
   border-bottom: 1px solid var(--line);
 }
 .topinner {
-  max-width: 1280px;
+  max-width: 1320px;
   padding: 0 32px;
-  gap: 32px;
+  gap: 30px;
 }
 .brand {
-  min-width: 110px;
+  min-width: 115px;
 }
 .brandLogo {
-  width: 110px;
+  width: 115px;
   height: 46px;
 }
 .headerCampus {
   border: 0;
   border-left: 1px solid var(--line);
   background: none;
-  padding: 0 0 0 25px;
+  padding: 0 0 0 24px;
   display: grid;
   grid-template-columns: 18px 1fr;
-  text-align: left;
   column-gap: 8px;
+  text-align: left;
   color: var(--ink);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
 }
 .headerCampus svg {
   grid-row: 1/3;
   align-self: center;
-  color: var(--brand);
+  color: #b34005;
 }
 .headerCampus small {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
   color: var(--muted);
   margin-top: 3px;
 }
 .topright {
-  gap: 16px;
+  gap: 15px;
 }
 .btn,
 .main .btn {
-  border-radius: 9px;
-  font-size: 14px;
+  border-radius: 11px;
+  font-size: 13px;
   font-weight: 700;
-  padding: 11px 17px;
+  padding: 11px 16px;
 }
 .btn.primary,
 .main .btn.primary {
   background: var(--brand);
-  color: #fff;
+  color: white;
 }
 .btn.primary:hover,
 .main .btn.primary:hover {
-  background: #056469;
+  background: #253e68;
+}
+.topList.btn.primary {
+  background: var(--orange);
+  color: #172139;
+}
+.topList.btn.primary:hover {
+  background: #ec5700;
 }
 .main .btn.outline {
-  color: var(--brand);
-  border-color: #b9d5d2;
+  color: var(--ink);
+  border-color: #bdcbe0;
 }
 .accountLabel {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--muted);
 }
 .accountLabel select {
-  font-size: 14px;
+  font-size: 13px;
   border-color: var(--line);
   padding: 9px 26px 9px 12px;
   font-weight: 600;
@@ -99,51 +122,48 @@
   object-fit: cover;
 }
 .demoNotice {
-  max-width: 1216px;
+  max-width: 1256px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  align-items: center;
+  gap: 12px;
   padding: 12px 0;
-  color: #6b7b7a;
-  font-size: 12px;
+  font-size: 11px;
+  color: #72809a;
 }
 .demoNotice > span {
   display: flex;
-  gap: 10px;
+  gap: 9px;
   align-items: center;
 }
 .demoTag {
-  display: inline-block;
-  flex-shrink: 0;
-  background: #eaf6f3;
-  border-radius: 5px;
-  padding: 4px 7px;
-  color: #276c66;
-  font-size: 11px;
+  color: #50617f;
+  font-size: 10px;
   font-weight: 700;
+  flex-shrink: 0;
 }
 .demoNotice button {
   display: flex;
-  align-items: center;
   gap: 5px;
+  align-items: center;
+  white-space: nowrap;
   border: 0;
   background: none;
-  padding: 5px 0;
-  font-size: 12px;
-  white-space: nowrap;
-  color: #607371;
+  color: #63718a;
+  padding: 4px 0;
+  font-size: 11px;
 }
 .shell {
   display: block;
-  max-width: 1280px;
+  max-width: 1320px;
 }
-.sidebar {
+.sidebar,
+.bottomNav {
   display: none;
 }
 .main {
-  padding: 8px 32px 36px;
+  padding: 3px 32px 40px;
   color: var(--ink);
 }
 .main h1,
@@ -151,328 +171,640 @@
 .main h3 {
   color: var(--ink);
 }
+h1,
+h2,
+h3,
+.cardTitle button,
+.cardTitle strong,
+.campusBanner strong,
+.storefrontBody b {
+  font-family: "Bricolage Grotesque", "DM Sans", sans-serif;
+  font-weight: 700;
+}
 h1 {
   font-size: 32px;
   letter-spacing: -1px;
-  font-weight: 800;
 }
 h2 {
-  font-size: 23px;
+  font-size: 25px;
   letter-spacing: -0.6px;
 }
 h3 {
-  font-size: 18px;
+  font-size: 20px;
 }
 .campusBanner,
-.page-requests .campusBanner,
-.page-services .campusBanner {
-  height: 145px;
-  border-radius: 14px;
-  padding: 24px 30px;
-  background: #edf7f4;
-  color: var(--ink);
+.page-services .campusBanner,
+.page-requests .campusBanner {
+  height: 178px;
+  padding: 28px 32px;
+  background: #13294b;
+  color: white;
+  border-radius: 16px;
   box-shadow: none;
-  margin: 0 0 12px;
+  margin: 0 0 13px;
   isolation: isolate;
+  border: 1px solid #13294b;
 }
 .campusBanner:before {
-  display: none;
-}
-.campusBanner > div {
-  width: 63%;
-  gap: 7px;
+  display: block;
+  background: linear-gradient(
+    90deg,
+    #13294b 0%,
+    #13294bf0 34%,
+    #13294b9e 60%,
+    #13294b10 100%
+  );
 }
 .campusBanner > img {
-  left: auto;
-  right: 0;
-  width: 34%;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  object-position: center 54%;
-  mask-image: linear-gradient(90deg, transparent 0%, black 28%);
+  object-position: center 58%;
+  mask-image: none;
+}
+.campusBanner .campusCopy {
+  width: 65%;
+  display: grid;
+  gap: 9px;
 }
 .campusKicker {
-  color: #3c766e;
-  font-size: 11px;
-  letter-spacing: 1.3px;
   background: none;
   border: 0;
   padding: 0;
-  text-align: left;
+  color: #ffbb94;
+  font-size: 10px;
+  letter-spacing: 1.8px;
 }
 .campusBanner strong,
-.page-requests .campusBanner strong,
-.page-services .campusBanner strong {
-  font-size: 30px;
+.page-services .campusBanner strong,
+.page-requests .campusBanner strong {
+  color: white;
+  font-size: 38px;
+  line-height: 1.13;
   letter-spacing: -1px;
 }
 .campusBanner small,
-.page-requests .campusBanner small,
-.page-services .campusBanner small {
-  font-size: 14px;
-  line-height: 1.55;
-  color: #55716d;
+.page-services .campusBanner small,
+.page-requests .campusBanner small {
+  display: block;
+  color: #e3eafa;
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 480px;
 }
 .campusBadge {
   position: absolute;
-  right: 16px;
-  bottom: 14px;
+  right: 22px;
+  bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 4px;
-  background: #ffffffef;
-  color: #304b47;
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 6px;
+  gap: 5px;
+  padding: 8px 11px;
+  background: #ffffffed;
+  color: #13294b;
+  border-radius: 7px;
+  font-size: 10px;
+  letter-spacing: 0.5px;
 }
 .campusNav {
-  margin: 0 0 26px;
-  min-height: 56px;
-  gap: 18px;
+  gap: 16px;
   padding: 0;
-  border-bottom: 1px solid var(--line);
-  overflow: auto;
+  margin: 0 0 25px;
+  min-height: 50px;
+  overflow-x: auto;
+  border-bottom: 1px solid #d9e0ec;
 }
 .campusNav button,
 .campusNav button:nth-child(4) {
   display: flex;
-  padding: 16px 4px;
-  font-size: 14px;
+  color: #69768b;
+  padding: 14px 5px;
+  font-size: 13px;
   font-weight: 600;
-  color: #657675;
+  flex-shrink: 0;
 }
 .campusNav button.active,
 .campusNav button:nth-child(4).active {
-  color: var(--brand);
-  border-bottom-color: var(--brand);
+  color: #13294b;
+  border-bottom-color: #ff5f05;
+}
+.campusNav button.active svg {
+  color: #b94300;
 }
 .campusNav button:hover {
-  background: #f5faf8;
+  background: #ebeff6;
 }
 .main .eyebrow {
-  color: #56827c;
-  font-size: 11px;
-  letter-spacing: 1.2px;
+  color: #a84108;
+  font-size: 10px;
+  letter-spacing: 1.25px;
+}
+.browseIntro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+.browseIntro .pageHead {
+  margin-bottom: 0;
 }
 .pageHead {
-  margin-bottom: 22px;
-  align-items: flex-end;
+  margin-bottom: 17px;
+  align-items: center;
 }
 .pageHead p {
   color: var(--muted);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.5;
-}
-.pageHead .btn {
-  display: none;
+  margin-top: 6px;
 }
 .pageHead .eyebrow {
   display: none;
 }
+.page-browse .pageHead .btn {
+  display: none;
+}
 .searchbar {
-  height: 54px;
-  border: 1px solid #bacdc8;
-  border-radius: 10px;
-  box-shadow: none;
-  color: var(--brand);
-  max-width: 760px;
+  width: 100%;
+  max-width: none;
+  height: 52px;
+  background: white;
+  border: 1px solid #ced7e5;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px #13294b04;
+  color: #13294b;
 }
 .searchbar:focus-within {
-  box-shadow: 0 0 0 3px #067d8215;
-  border-color: var(--brand);
+  outline: 3px solid #13294b12;
+  border-color: #8196b6;
 }
 .searchbar input {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--ink);
 }
 .searchbar input::placeholder {
-  color: #81948e;
+  color: #8190a7;
 }
 .quickCategories {
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
-  margin: 16px 0 20px;
+  gap: 9px;
+  margin: 16px 0;
 }
 .quickCategories button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
   background: white;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  padding: 9px 15px;
-  font-size: 14px;
-  color: #59736e;
+  border: 1px solid #dce3ed;
+  border-radius: 10px;
+  color: #3c506e;
+  font-size: 12px;
+  font-weight: 600;
+}
+.quickCategories svg {
+  color: #526c94;
 }
 .quickCategories button.active {
-  background: #edf7f4;
-  border-color: #84bdb2;
-  color: #116e64;
-  font-weight: 700;
+  background: #13294b;
+  border-color: #13294b;
+  color: white;
+}
+.quickCategories button.active svg {
+  color: #ffa670;
 }
 .quickCategories button:hover {
-  border-color: #84bdb2;
+  border-color: #98aecb;
+}
+.browseControls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 26px;
 }
 .marketSwitch {
-  border-radius: 8px;
+  order: 1;
+  display: flex;
+  background: #e5eaf3;
+  border-radius: 9px;
   padding: 4px;
   margin: 0;
-  background: #f0f4f3;
 }
 .marketSwitch button {
-  font-size: 14px;
+  color: #596d8a;
+  font-size: 12px;
   font-weight: 600;
-  padding: 9px 18px;
-  color: #617873;
+  padding: 8px 13px;
 }
 .marketSwitch button.active {
+  color: #13294b;
   background: white;
-  box-shadow: 0 1px 5px #203e3512;
-  color: #136c66;
+  box-shadow: 0 2px 4px #13294b0b;
 }
-.filters {
-  margin: 16px 0 26px;
+.filterDetails {
+  order: 2;
+  flex: 1;
+  margin: 0;
+  font-size: 12px;
+  color: #566c8b;
+}
+.filterDetails summary {
+  cursor: pointer;
+  padding: 9px 0;
+  font-weight: 600;
+  width: fit-content;
+}
+.filterDetails summary span {
+  display: none;
+}
+.filterDetails[open] {
+  order: 4;
+  flex-basis: 100%;
+}
+.filterDetails .filters {
+  background: #edf1f8;
+  border: 1px solid #dce3ee;
+  border-radius: 12px;
+  margin: 8px 0 0;
+  padding: 16px;
   gap: 12px;
 }
 .filters label {
-  color: #5c756d;
-  font-size: 12px;
-  font-weight: 500;
+  color: #566884;
+  font-size: 11px;
+  font-weight: 600;
 }
 .filters select {
-  font-size: 14px;
-  min-width: 170px;
-  padding: 10px 30px 10px 12px;
-  color: #39534b;
-  border-color: var(--line);
+  font-size: 13px;
+  min-width: 150px;
+  padding: 10px 26px 10px 10px;
+  color: #324a6b;
+  border-color: #d3ddec;
 }
 .filters .today {
-  font-size: 13px;
-  color: #526c62;
+  font-size: 12px;
+  color: #3a567b;
+}
+.savedFilter {
+  order: 3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid #d7dfeb;
+  color: #506380;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 9px;
+  padding: 10px 13px;
+}
+.savedFilter:hover,
+.savedFilter.active {
+  border-color: #f3a378;
+  background: #fff0e7;
+  color: #9f3b03;
 }
 .sectionHeading {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   justify-content: space-between;
 }
 .sectionHeading h2 {
-  color: var(--ink);
+  color: #13294b;
+  margin: 0;
 }
-.sectionHeading span {
-  color: #799087;
-  font-size: 13px;
+.sectionHeading > span {
+  font-size: 12px;
+  color: #7e8ba1;
 }
 .grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px 20px;
 }
-.listingCard {
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  box-shadow: none;
+.marketCard {
+  --card-accent: #284f91;
+  --card-tint: #e6eeff;
+  --card-body: #f7faff;
+  --card-badge: #dbe8ff;
+  background: white;
+  border: 1px solid #dbe2ed;
+  border-radius: 15px;
+  box-shadow: 0 3px 9px #13294b04;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   transition:
+    transform 0.18s,
     box-shadow 0.18s,
     border-color 0.18s;
 }
-.listingCard:hover {
-  box-shadow: 0 6px 22px #243a3b0b;
-  border-color: #bdd4cd;
+.marketCard.kind-free,
+.marketCard.kind-sale {
+  --card-accent: #a4410e;
+  --card-tint: #ffebdd;
+  --card-body: #fffaf6;
+  --card-badge: #ffe0cb;
 }
-.itemImage {
-  height: 190px;
-  padding: 0;
-  overflow: hidden;
-  background: #edf2f0;
+.marketCard.kind-service {
+  --card-accent: #304577;
+  --card-tint: #e8edfb;
+  --card-body: #f8f9ff;
+  --card-badge: #e1e7fa;
 }
-.itemImage em {
-  background: #fffffff2;
-  color: #38524b;
-  font-size: 11px;
-  padding: 6px 9px;
-  border-radius: 5px;
-  top: 12px;
-  left: 12px;
-  font-weight: 600;
+.marketCard:hover {
+  transform: translateY(-3px);
+  border-color: #9ab0d2;
+  box-shadow: 0 8px 22px #13294b10;
 }
-.cardBody {
-  padding: 15px;
+.cardPhoto {
+  position: relative;
+  background: #e8edf3;
 }
-.listingCondition {
+.marketCard .itemImage {
   display: block;
-  font-size: 11px;
-  color: #7a8d85;
-  margin-bottom: 5px;
-}
-.cardTitle {
-  flex-direction: column;
-  gap: 7px;
-}
-.cardTitle button {
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: var(--ink);
-  min-height: 42px;
-}
-.cardTitle strong {
-  font-size: 15px;
-  color: #216b5e;
-  font-weight: 700;
+  height: auto;
+  aspect-ratio: 1.22;
+  width: 100%;
+  overflow: hidden;
   padding: 0;
+  background: #e8edf3;
+  border-radius: 0;
 }
-.meta {
+.itemImage > img {
+  object-fit: cover;
+  transition: transform 0.25s;
+}
+.marketCard:hover .itemImage > img {
+  transform: scale(1.025);
+}
+.listingKind {
+  position: absolute;
+  left: 11px;
+  top: 11px;
+  pointer-events: none;
+  background: var(--card-badge);
+  color: var(--card-accent);
+  border: 1px solid #ffffff6b;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.saveListing {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 33px;
+  height: 33px;
+  border: 1px solid #ffffffba;
+  border-radius: 50%;
+  background: #fffffff5;
+  color: #243c62;
+  box-shadow: 0 2px 8px #13294b12;
+}
+.saveListing:hover,
+.saveListing.isSaved {
+  color: #ba4401;
+  background: #fff0e6;
+}
+.marketCard .cardBody {
+  padding: 15px;
+  flex: 1;
+  background: var(--card-body);
+}
+.cardContext {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 10px;
+  color: #7a89a2;
+  margin-bottom: 8px;
+}
+.cardContext > span:last-child {
+  flex-shrink: 0;
+}
+.marketCard .cardTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.marketCard .cardTitle button {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.16;
+  letter-spacing: -0.4px;
+  color: #162e54;
+  min-height: 44px;
+  text-align: left;
+}
+.marketCard .cardTitle strong {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 28px;
+  line-height: 1.15;
+  padding: 0;
+  letter-spacing: -0.8px;
+  color: var(--card-accent);
+}
+.marketCard .cardTitle strong small {
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #6e7d94;
+}
+.cardDescription {
   font-size: 12px;
-  color: #71877e;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 10px;
+  line-height: 1.45;
+  margin: 9px 0 12px;
+  color: #758199;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 35px;
 }
-.cardFooter {
-  margin-top: 13px;
-  padding-top: 12px;
-  border-top: 1px solid #edf2ef;
-}
-.lender {
-  font-size: 12px;
-  color: #476157;
-  font-weight: 500;
-  gap: 7px;
-}
-.memberBadge {
+.marketCard .meta {
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #77958a;
+  font-size: 11px;
+  color: #637694;
+  margin: 0;
+  flex-wrap: wrap;
+}
+.cardAvailability {
+  margin-left: auto;
+  color: #576c89;
+  font-size: 9px;
+}
+.cardAvailability:before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 4px;
+  border-radius: 50%;
+  background: #5378a5;
+}
+.marketCard .cardFooter {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--card-tint);
+  border-top: 1px solid #13294b05;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+.marketCard .lender {
+  min-width: 0;
+  display: flex;
+  gap: 8px;
+  color: #304569;
+  font-size: 11px;
+  text-align: left;
+}
+.marketCard .lender .avatar {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border: 2px solid white;
+  background: white;
+}
+.lender > span:last-child {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+.lender b {
+  font-size: 11px;
+  font-weight: 700;
+}
+.lender small {
+  display: block;
+  font-size: 9px;
+  color: #74819a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 172px;
+}
+.studentShield {
+  flex-shrink: 0;
+  color: #7489aa;
+}
+.campusConversations {
+  margin-top: 34px;
+  border-top: 1px solid #dce3ef;
+  padding-top: 28px;
+}
+.campusConversations .sectionHeading .eyebrow {
+  display: block;
+  margin-bottom: 5px;
+}
+.campusConversations .sectionHeading > button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: #385f94;
+  font-size: 12px;
+}
+.campusPostGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.campusPost {
+  padding: 18px;
+  background: white;
+  border: 1px solid #dce4ef;
+  border-radius: 14px;
+  text-align: left;
+}
+.campusPost:hover {
+  border-color: #93aacb;
+}
+.requestPost {
+  background: #fff3eb;
+  border-color: #f1ddcc;
+}
+.postAuthor {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.postAuthor > span:nth-child(2) {
+  display: grid;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+.postAuthor b {
+  color: #263d63;
+  font-size: 12px;
+}
+.postAuthor small {
+  color: #7284a0;
+  font-size: 10px;
+}
+.postAuthor > svg {
+  color: #94a4bd;
+  flex-shrink: 0;
+}
+.postAuthor .exAvatar {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+.campusPost p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #3c5479;
+  margin: 16px 0;
+}
+.postLink {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: #5876a2;
   font-size: 11px;
 }
-.cardFooter .arrow {
-  display: none;
-}
 .profileBio {
-  font-size: 15px;
-  color: #5c756a;
+  color: #61718c;
+  font-size: 14px;
   line-height: 1.6;
   text-align: center;
   margin: 22px 0;
 }
 .trustMini b {
   font-size: 17px;
-  color: #36584c;
+  color: #30476b;
 }
 .profileModal > small {
   display: block;
-  margin-top: 20px;
-  color: #82938b;
-  font-size: 12px;
+  color: #8692a7;
+  font-size: 11px;
   line-height: 1.5;
+  margin-top: 20px;
 }
 .marketFooter {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
   align-items: center;
+  gap: 16px;
   border-top: 1px solid var(--line);
-  margin-top: 50px;
-  padding-top: 22px;
-  font-size: 12px;
-  color: #7a8d83;
+  margin-top: 44px;
+  padding-top: 23px;
+  font-size: 11px;
+  color: #7b89a2;
 }
 .marketFooter > div {
   display: flex;
@@ -484,96 +816,111 @@ h3 {
   border: 0;
   padding: 0;
   text-decoration: none;
-  font-size: 12px;
-  color: #5c786b;
+  font-size: 11px;
+  color: #5e769c;
 }
 .serviceIntro {
-  background: #f1f8f4;
-  border: 1px solid #ddebe3;
-  border-left: 1px solid #ddebe3;
-  border-radius: 10px;
-  padding: 16px 20px;
+  background: #e9effb;
+  border: 1px solid #d4dff3;
+  border-left: 3px solid #ff5f05;
+  border-radius: 12px;
+  padding: 17px 20px;
   gap: 7px;
 }
 .serviceIntro b {
-  font-size: 16px;
-  color: var(--ink);
+  font-family: "Bricolage Grotesque", sans-serif;
+  color: #18365f;
+  font-size: 19px;
 }
 .serviceIntro span {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
-  color: #687d72;
+  color: #6680a1;
 }
 .storefrontGrid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
 }
 .storefrontCard {
-  border-color: var(--line);
-  border-radius: 12px;
-  box-shadow: none;
-  color: var(--ink);
+  border: 1px solid #dbe3ee;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 3px 9px #13294b04;
+  transition:
+    transform 0.18s,
+    box-shadow 0.18s;
+  color: #13294b;
 }
 .storefrontCard:hover {
-  border-color: #95c0ad;
-  box-shadow: 0 5px 20px #243a3b0a;
+  transform: translateY(-3px);
+  border-color: #9cb0cd;
+  box-shadow: 0 8px 22px #13294b10;
 }
 .storefrontCover {
-  height: 160px;
+  height: 180px;
 }
 .storefrontBody {
-  padding: 25px 17px 18px;
+  padding: 27px 17px 18px;
+  border-top: 3px solid #ff5f05;
+  background: #fff7f1;
+}
+.storefrontCard:nth-child(even) .storefrontBody {
+  border-top-color: #3d649e;
+  background: #eef3fc;
 }
 .storefrontBody .exAvatar {
-  width: 46px;
-  height: 46px;
-  top: -24px;
+  width: 48px;
+  height: 48px;
+  top: -26px;
   right: 17px;
   border: 3px solid white;
 }
 .storefrontBody small {
-  font-size: 11px;
-  color: #638e7c;
+  font-size: 10px;
+  color: #7083a0;
   letter-spacing: 0.2px;
   text-transform: none;
 }
 .storefrontBody b {
-  font-size: 17px;
-  line-height: 1.4;
-  margin-top: 6px;
+  font-size: 23px;
+  line-height: 1.07;
+  letter-spacing: -0.5px;
+  min-height: 49px;
+  margin-top: 9px;
 }
 .storefrontBody p {
+  color: #74819a;
   font-size: 13px;
   line-height: 1.6;
-  color: #6d8478;
-  min-height: 100px;
-  margin: 10px 0 14px;
+  min-height: 104px;
+  margin: 13px 0 16px;
 }
 .storefrontBody > span:last-child {
-  font-size: 12px;
-  color: #427563;
+  color: #476ba0;
+  font-size: 11px;
 }
 .serviceCard {
-  border-color: var(--line);
-  border-radius: 12px;
+  border-color: #dbe3ee;
+  border-radius: 14px;
   box-shadow: none;
 }
 .serviceCard p {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.55;
 }
 .serviceCard .eyebrow {
-  font-size: 11px;
+  font-size: 10px;
 }
 .groupCard {
-  border-color: var(--line);
+  border-color: #dbe3ee;
+  border-radius: 14px;
   box-shadow: none;
 }
 .groupCard p,
 .extraLead {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.6;
-  color: #6b7f76;
+  color: #74829a;
 }
 .modalContent {
   color: var(--ink);
@@ -584,37 +931,44 @@ h3 {
   line-height: 1.55;
 }
 .modalContent h2 {
-  font-size: 26px;
+  font-size: 29px;
 }
 .detailHero {
   height: 280px;
 }
 .profileLine small {
-  font-size: 12px;
+  font-size: 11px;
 }
 .detailGrid span,
 .detailGrid b,
 .ruleBox p {
-  font-size: 13px;
+  font-size: 12px;
 }
 input,
 textarea,
 select {
-  accent-color: var(--brand);
+  accent-color: #13294b;
+}
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #ff8a46;
+  outline-offset: 3px;
 }
 @media (max-width: 1100px) {
   .grid,
   .storefrontGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .headerCampus {
-    padding-left: 20px;
-  }
   .demoNotice {
     margin: 0 32px;
   }
-  .storefrontBody p {
-    min-height: 105px;
+  .campusNav {
+    gap: 11px;
+  }
+  .campusNav button,
+  .campusNav button:nth-child(4) {
+    font-size: 12px;
   }
 }
 @media (max-width: 850px) {
@@ -625,51 +979,37 @@ select {
   .storefrontGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .sidebar {
-    display: none;
+  .campusPostGrid {
+    grid-template-columns: 1fr;
   }
-  .campusNav {
-    gap: 15px;
-    margin: 0 0 22px;
+  .campusBanner .campusCopy {
+    width: 82%;
   }
-  .campusNav button {
-    display: flex;
-  }
-  .bottomNav {
-    display: none;
-  }
-  .main {
-    padding-bottom: 32px;
-  }
-  .demoNotice > span {
-    align-items: flex-start;
-  }
-  .demoNotice {
-    align-items: flex-start;
-  }
-  .campusBanner > div {
-    width: 70%;
-  }
-  .campusBanner > img {
-    width: 30%;
+  .campusBanner strong,
+  .page-services .campusBanner strong,
+  .page-requests .campusBanner strong {
+    font-size: 33px;
   }
   .storefrontBody p {
-    min-height: 65px;
+    min-height: 67px;
+  }
+  .campusNav {
+    gap: 13px;
   }
 }
 @media (max-width: 620px) {
   .topbar {
-    height: 68px;
+    height: 65px;
   }
   .topinner {
     padding: 0 18px;
     gap: 12px;
   }
   .brand {
-    min-width: 86px;
+    min-width: 85px;
   }
   .brandLogo {
-    width: 86px;
+    width: 85px;
     height: 42px;
   }
   .topright {
@@ -684,7 +1024,7 @@ select {
   }
   .accountLabel select {
     font-size: 12px;
-    max-width: 128px;
+    max-width: 129px;
     padding: 8px;
   }
   .avatarButton .avatar {
@@ -694,216 +1034,278 @@ select {
   .demoNotice {
     margin: 0 18px;
     padding: 10px 0;
-    font-size: 11px;
+    font-size: 10px;
+    align-items: flex-start;
   }
   .demoNotice > span {
     display: block;
     line-height: 1.5;
   }
   .demoTag {
-    margin-right: 7px;
-    font-size: 10px;
+    margin-right: 5px;
   }
   .demoNotice button {
     font-size: 0;
-    padding: 3px;
-  }
-  .demoNotice button svg {
-    width: 17px;
-    height: 17px;
+    padding: 4px 0 0 4px;
   }
   .main {
-    padding: 4px 18px 28px;
+    padding: 2px 18px 30px;
   }
   .campusBanner,
   .page-services .campusBanner,
   .page-requests .campusBanner {
     height: auto;
-    min-height: 128px;
+    min-height: 172px;
     padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 8px;
+    border-radius: 12px;
+    margin-bottom: 10px;
   }
-  .campusBanner > div {
+  .campusBanner:before {
+    background: linear-gradient(
+      90deg,
+      #13294bf5 0%,
+      #13294bcc 64%,
+      #13294b90 100%
+    );
+  }
+  .campusBanner .campusCopy {
     width: 100%;
-    max-width: 80%;
-    gap: 7px;
-  }
-  .campusBanner > img {
-    width: 35%;
-    opacity: 0.35;
+    max-width: 100%;
+    gap: 8px;
   }
   .campusBanner strong,
   .page-services .campusBanner strong,
   .page-requests .campusBanner strong {
-    font-size: 25px;
+    font-size: clamp(24px, 7.8vw, 30px);
+    line-height: 1.08;
+    letter-spacing: -0.6px;
+  }
+  .campusKicker {
+    font-size: 8px;
+    letter-spacing: 1.2px;
   }
   .campusBanner small,
   .page-services .campusBanner small,
   .page-requests .campusBanner small {
-    font-size: 12px;
-    max-width: 100%;
-  }
-  .campusKicker {
-    font-size: 9px;
-    letter-spacing: 1px;
+    display: block;
+    font-size: 11px;
+    line-height: 1.5;
+    max-width: 270px;
   }
   .campusBadge {
     display: none;
   }
   .campusNav {
-    margin: 0 0 22px;
-    gap: 16px;
+    gap: 15px;
+    min-height: 46px;
+    margin-bottom: 22px;
   }
   .campusNav button,
   .campusNav button:nth-child(4) {
-    font-size: 13px;
-    padding: 13px 0;
+    font-size: 12px;
+    padding: 12px 0;
   }
   .campusNav svg {
     display: none;
+  }
+  .browseIntro {
+    display: block;
+  }
+  .browseIntro .pageHead {
+    margin-bottom: 15px;
   }
   h1 {
     font-size: 27px;
   }
   h2 {
-    font-size: 21px;
+    font-size: 22px;
   }
   .pageHead {
-    margin-bottom: 18px;
+    margin-bottom: 15px;
   }
   .pageHead p {
-    font-size: 14px;
+    font-size: 12px;
   }
   .searchbar {
-    height: 50px;
+    height: 49px;
   }
   .searchbar input {
-    font-size: 14px;
+    font-size: 13px;
   }
   .quickCategories {
+    overflow-x: auto;
     flex-wrap: nowrap;
-    overflow: auto;
-    margin: 13px 0 17px;
-    padding-bottom: 3px;
     gap: 7px;
+    margin: 14px 0;
+    padding-bottom: 3px;
   }
   .quickCategories button {
     flex-shrink: 0;
-    font-size: 12px;
-    padding: 8px 12px;
+    font-size: 11px;
+    padding: 9px 11px;
+    gap: 6px;
+  }
+  .quickCategories svg {
+    width: 15px;
+    height: 15px;
+  }
+  .browseControls {
+    gap: 10px;
+    margin-bottom: 23px;
   }
   .marketSwitch {
     width: 100%;
   }
   .marketSwitch button {
-    font-size: 13px;
+    font-size: 12px;
+    flex: 1;
+    padding: 9px 5px;
   }
-  .filters {
+  .savedFilter {
+    padding: 8px 11px;
+    font-size: 11px;
+  }
+  .filterDetails {
+    font-size: 11px;
+  }
+  .filterDetails .filters {
     gap: 10px;
-    margin-bottom: 24px;
+    padding: 12px;
   }
   .filters label {
     width: calc(50% - 5px);
-    font-size: 11px;
   }
   .filters select {
     min-width: 0;
     width: 100%;
-    font-size: 13px;
+    font-size: 12px;
     padding: 9px;
   }
   .filters .today {
     width: auto;
-    margin: 2px 0;
-    font-size: 12px;
+  }
+  .sectionHeading {
+    gap: 7px;
+  }
+  .sectionHeading > span {
+    font-size: 10px;
+    flex-shrink: 0;
   }
   .grid {
-    gap: 16px 12px;
+    gap: 18px 12px;
   }
-  .itemImage {
-    height: 155px;
+  .marketCard {
+    border-radius: 12px;
   }
-  .itemImage em {
-    font-size: 9px;
-    padding: 5px 6px;
+  .marketCard .itemImage {
+    aspect-ratio: 1;
+  }
+  .listingKind {
+    left: 7px;
     top: 8px;
-    left: 8px;
+    font-size: 8px;
+    padding: 5px 6px;
+    max-width: calc(100% - 44px);
   }
-  .cardBody {
+  .saveListing {
+    width: 27px;
+    height: 27px;
+    top: 7px;
+    right: 7px;
+  }
+  .saveListing svg {
+    width: 16px;
+    height: 16px;
+  }
+  .marketCard .cardBody {
     padding: 11px;
   }
-  .cardTitle button {
-    font-size: 13px;
-    min-height: 38px;
-  }
-  .cardTitle strong {
-    font-size: 13px;
-  }
-  .meta {
-    font-size: 10px;
-  }
-  .meta svg {
-    width: 11px;
-  }
-  .meta svg:nth-of-type(2),
-  .meta span {
-    display: none;
-  }
-  .meta {
-    row-gap: 4px;
-  }
-  .lender {
-    font-size: 10px;
+  .cardContext {
+    font-size: 9px;
     gap: 5px;
+    margin-bottom: 7px;
   }
-  .lender .avatar,
-  .lender .exAvatar {
-    width: 24px !important;
-    height: 24px !important;
-  }
-  .memberBadge {
+  .cardContext > span:last-child {
     display: none;
   }
-  .listingCondition {
+  .marketCard .cardTitle {
+    gap: 8px;
+  }
+  .marketCard .cardTitle button {
+    font-size: 16px;
+    min-height: 38px;
+    line-height: 1.15;
+    letter-spacing: -0.2px;
+  }
+  .marketCard .cardTitle strong {
+    font-size: 24px;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .marketCard .cardTitle strong small {
+    font-size: 9px;
+  }
+  .cardDescription {
+    display: none;
+  }
+  .marketCard .meta {
+    margin-top: 12px;
+    font-size: 9px;
+  }
+  .cardAvailability {
+    display: none;
+  }
+  .marketCard .cardFooter {
+    padding: 10px;
+  }
+  .marketCard .lender {
+    gap: 6px;
+  }
+  .marketCard .lender .avatar {
+    width: 26px;
+    height: 26px;
+  }
+  .lender b {
+    font-size: 9px;
+  }
+  .lender small {
+    font-size: 8px;
+    max-width: 81px;
+  }
+  .studentShield {
+    display: none;
+  }
+  .campusConversations .sectionHeading {
+    align-items: flex-end;
+  }
+  .campusConversations .sectionHeading > button {
     font-size: 10px;
+  }
+  .campusPost {
+    padding: 16px;
   }
   .marketFooter {
     flex-direction: column;
     align-items: flex-start;
     margin-top: 32px;
-    padding-top: 20px;
-    font-size: 11px;
-  }
-  .marketFooter > div {
-    gap: 18px;
   }
   .storefrontGrid {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 20px;
   }
   .storefrontCover {
-    height: 180px;
+    height: 205px;
   }
   .storefrontBody {
-    padding: 24px 18px 18px;
+    padding: 28px 18px 18px;
+  }
+  .storefrontBody b {
+    min-height: 0;
+    font-size: 26px;
   }
   .storefrontBody p {
     min-height: 0;
-    font-size: 14px;
-  }
-  .serviceIntro b {
-    font-size: 15px;
-  }
-  .serviceIntro span {
     font-size: 13px;
-  }
-  .sectionHeading {
-    gap: 8px;
-  }
-  .sectionHeading > span {
-    font-size: 11px;
-    white-space: nowrap;
   }
   .detailHero {
     height: 220px;
@@ -921,679 +1323,15 @@ select {
     max-height: 220px;
   }
 }
-/* Keep the inventory within the first viewport, with advanced filters on demand. */
-.campusBanner,
-.page-requests .campusBanner,
-.page-services .campusBanner {
-  height: 112px;
-  padding: 18px 25px;
-}
-.campusBanner strong,
-.page-requests .campusBanner strong,
-.page-services .campusBanner strong {
-  font-size: 27px;
-}
-.campusBanner small,
-.page-requests .campusBanner small,
-.page-services .campusBanner small {
-  font-size: 13px;
-}
-.pageHead {
-  margin-bottom: 17px;
-}
-.quickCategories {
-  margin: 14px 0 16px;
-}
-.filterDetails {
-  margin: 14px 0 24px;
-  font-size: 13px;
-  color: #527267;
-}
-.filterDetails summary {
-  cursor: pointer;
-  width: fit-content;
-  padding: 4px 0;
-  font-weight: 600;
-}
-.filterDetails summary span {
-  font-weight: 400;
-  color: #8a9c93;
-  margin-left: 8px;
-  font-size: 12px;
-}
-.filterDetails .filters {
-  padding: 15px;
-  background: #f7faf8;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  margin: 10px 0 0;
-}
-@media (max-width: 620px) {
-  .campusBanner,
-  .page-services .campusBanner,
-  .page-requests .campusBanner {
-    min-height: 94px;
-    padding: 16px 18px;
-  }
-  .campusBanner > div {
-    max-width: 100%;
-  }
-  .campusBanner > img {
-    display: none;
-  }
-  .campusBanner strong,
-  .page-services .campusBanner strong,
-  .page-requests .campusBanner strong {
-    font-size: 22px;
-    white-space: nowrap;
-  }
-  .campusBanner small,
-  .page-services .campusBanner small,
-  .page-requests .campusBanner small {
-    display: none;
-  }
-  .campusNav {
-    margin-bottom: 20px;
-  }
-  .filterDetails {
-    margin: 12px 0 20px;
-  }
-  .filterDetails summary span {
-    font-size: 11px;
-    margin-left: 5px;
-  }
-  .filterDetails .filters {
-    padding: 12px;
-  }
-}
-
-/* Boro's campus identity: warm paper, saturated teal, and playful photo cards. */
-:root {
-  --ink: #173f3d;
-  --brand: #076d68;
-  --line: #e4e8df;
-  --paper: #fff9ef;
-  --orange: #d44f26;
-}
-.app,
-.shell {
-  background: #fffefb;
-}
-.topbar {
-  background: #fffefb;
-}
-.btn.primary,
-.main .btn.primary {
-  box-shadow: 0 3px 0 #064b47;
-}
-.btn.primary:hover,
-.main .btn.primary:hover {
-  background: #075853;
-}
-.campusBanner.marketHero {
-  height: 266px;
-  padding: 27px 38px;
-  background: #f9edda;
-  border-radius: 20px;
-  margin-bottom: 10px;
-  border: 1px solid #f0e2cc;
-}
-.campusBanner .heroCopy {
-  width: 53%;
-  gap: 10px;
-}
-.campusKicker {
-  color: #80583b;
-  font-size: 10px;
-  letter-spacing: 1.8px;
-}
-.campusBanner strong {
-  font-size: 43px;
-  line-height: 1.12;
-  letter-spacing: -1.8px;
-}
-.campusBanner strong > span {
-  color: var(--brand);
-}
-.campusBanner small {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #6d7161;
-}
-.heroLocation {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: #6c7465;
-  font-size: 11px;
-  margin-top: 4px;
-}
-.campusBanner .heroCollage {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 46%;
-  display: block;
-}
-.heroOrbit {
-  position: absolute;
-  width: 355px;
-  height: 355px;
-  border-radius: 50%;
-  background: #c8dfd0;
-  top: -44px;
-  right: 18px;
-}
-.heroNote {
-  position: absolute;
-  right: 18px;
-  top: 15px;
-  font-size: 13px;
-  line-height: 1.15;
-  font-weight: 700;
-  color: #4c7865;
-  transform: rotate(8deg);
-}
-.heroPick {
-  position: absolute;
-  padding: 7px;
-  background: #fffefb;
-  border: 1px solid #e4dfd3;
-  border-radius: 12px;
-  box-shadow: 0 7px 16px #294c3320;
-  width: 155px;
-  color: var(--ink);
-  text-align: left;
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
-}
-.heroPick > img {
-  width: 100%;
-  height: 103px;
-  object-fit: cover;
-  border-radius: 7px;
-  display: block;
-}
-.heroPick > span {
-  display: grid;
-  gap: 4px;
-  padding: 8px 3px 3px;
-}
-.heroPick b {
-  font-size: 10px;
-  line-height: 1.3;
-}
-.heroPick small {
-  font-size: 9px;
-  line-height: 1.2;
-  color: #738273;
-}
-.heroCamera {
-  top: 28px;
-  left: 5px;
-  transform: rotate(-9deg);
-  z-index: 3;
-}
-.heroCookies {
-  top: 58px;
-  left: 164px;
-  transform: rotate(7deg);
-  z-index: 2;
-}
-.heroDress {
-  width: 132px;
-  top: 94px;
-  right: 18px;
-  transform: rotate(-6deg);
-  z-index: 3;
-}
-.heroDress > img {
-  height: 88px;
-}
-.heroSticker {
-  position: absolute;
-  bottom: 12px;
-  left: 18px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: #f2cf62;
-  color: #62492c;
-  font-size: 12px;
-  line-height: 1.3;
-  font-weight: 800;
-  transform: rotate(-12deg);
-  z-index: 4;
-  border: 3px solid #fff0ba;
-}
-.heroPick:hover {
-  transform: rotate(0) translateY(-4px);
-  box-shadow: 0 12px 22px #294c332b;
-  z-index: 5;
-}
-.compactHero.campusBanner {
-  height: 102px;
-  background: #f9edda;
-  border: 1px solid #f0e2cc;
-  border-radius: 16px;
-}
-.compactHero .heroCopy {
-  width: 100%;
-  gap: 5px;
-}
-.compactHero strong {
-  font-size: 23px !important;
-  letter-spacing: -0.6px;
-}
-.compactHero strong br {
-  display: none;
-}
-.compactHero strong > span::before {
-  content: " ";
-}
-.compactHero .heroCollage,
-.compactHero .heroLocation,
-.compactHero .heroCopy > small {
-  display: none;
-}
-.campusNav {
-  gap: 12px;
-  min-height: 59px;
-  margin-bottom: 22px;
-}
-.campusNav button,
-.campusNav button:nth-child(4) {
-  padding: 14px 12px;
-  font-size: 13px;
-  border-bottom-width: 0;
-  border-radius: 9px;
-  margin: 7px 0;
-}
-.campusNav button.active,
-.campusNav button:nth-child(4).active {
-  background: var(--brand);
-  color: white;
-}
-.campusNav button:hover {
-  background: #eaf1e8;
-}
-.campusNav button.active:hover {
-  background: #075853;
-}
-.pageHead h1 {
-  font-size: 27px;
-  letter-spacing: -1px;
-}
-.pageHead p {
-  font-size: 13px;
-  margin-top: 6px;
-}
-.pageHead {
-  margin-bottom: 13px;
-}
-.searchbar {
-  max-width: none;
-  height: 52px;
-  background: white;
-  border-radius: 12px;
-  border-color: #d5dfd1;
-  box-shadow: 0 3px 0 #edf0e7;
-}
-.quickCategories {
-  gap: 10px;
-  margin: 16px 0;
-}
-.quickCategories button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: #f7f6ef;
-  border: 1px solid #eeede4;
-  border-radius: 10px;
-  color: #496958;
-  font-size: 13px;
-  font-weight: 600;
-}
-.quickCategories button:nth-child(2) {
-  background: #edf3e9;
-}
-.quickCategories button:nth-child(3) {
-  background: #faece5;
-}
-.quickCategories button:nth-child(4) {
-  background: #faf3d8;
-}
-.quickCategories button:nth-child(5) {
-  background: #e9efef;
-}
-.quickCategories button:nth-child(6) {
-  background: #f0eaf3;
-}
-.quickCategories button.active {
-  background: #163f3d;
-  border-color: #163f3d;
-  color: white;
-}
-.quickCategories button:hover {
-  border-color: #7faaa0;
-}
-.marketSwitch {
-  background: transparent;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-}
-.marketSwitch button.active {
-  background: #e3eee4;
-  box-shadow: none;
-  color: #175a46;
-}
-.filterDetails {
-  margin: 10px 0 18px;
-}
-.filterDetails summary {
-  font-size: 12px;
-}
-.sectionHeading {
-  margin-bottom: 15px;
-}
-.sectionHeading h2 {
-  font-size: 21px;
-}
-.listingCard {
-  border-radius: 15px;
-  background: white;
-  border-color: #e4e8df;
-  box-shadow: 0 3px 0 #eff0e8;
-  transition:
-    transform 0.18s,
-    box-shadow 0.18s;
-}
-.listingCard:hover {
-  transform: translateY(-4px);
-  border-color: #a3c5b5;
-  box-shadow: 0 8px 22px #23463115;
-}
-.itemImage {
-  height: 188px;
-}
-.itemImage > img {
-  transition: transform 0.3s;
-}
-.listingCard:hover .itemImage > img {
-  transform: scale(1.035);
-}
-.itemImage em {
-  border-radius: 30px;
-  padding: 6px 10px;
-  background: #fffffff0;
-  color: #365744;
-}
-.freeListing .itemImage em {
-  background: #f9d867;
-  color: #62492c;
-}
-.cardTitle strong {
-  font-size: 17px;
-  letter-spacing: -0.35px;
-}
-.freeListing .cardTitle strong {
-  color: #b64f2c;
-}
-.cardFooter {
-  background: #fafbf7;
-  margin: 14px -15px -15px;
-  padding: 12px 15px;
-}
-.serviceIntro {
-  background: #f9edda;
-  border-color: #f0e2cc;
-}
-.storefrontCard {
-  border-radius: 16px;
-  box-shadow: 0 3px 0 #eff0e8;
-  transition:
-    transform 0.18s,
-    box-shadow 0.18s;
-  background: white;
-}
-.storefrontCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 22px #23463115;
-}
-.storefrontCard:nth-child(1) .storefrontBody {
-  background: #fff8ed;
-}
-.storefrontCard:nth-child(2) .storefrontBody {
-  background: #edf5ef;
-}
-.storefrontCard:nth-child(3) .storefrontBody {
-  background: #f5f0f8;
-}
-.storefrontCard:nth-child(4) .storefrontBody {
-  background: #f1f4e6;
-}
-button:focus-visible,
-a:focus-visible,
-summary:focus-visible {
-  outline: 3px solid #d44f26;
-  outline-offset: 4px;
-}
-@media (max-width: 1100px) {
-  .campusBanner.marketHero {
-    padding: 28px;
-  }
-  .campusBanner strong {
-    font-size: 36px;
-  }
-  .heroCookies {
-    left: 135px;
-  }
-  .heroDress {
-    display: none;
-  }
-  .heroNote {
-    top: 16px;
-    right: 16px;
-  }
-  .heroOrbit {
-    right: -35px;
-  }
-}
-@media (max-width: 850px) {
-  .campusBanner.marketHero {
-    height: 250px;
-  }
-  .campusBanner strong {
-    font-size: 32px;
-  }
-  .campusBanner .heroCopy {
-    width: 55%;
-  }
-  .campusBanner .heroCollage {
-    width: 42%;
-  }
-  .heroPick {
-    width: 130px;
-  }
-  .heroPick > img {
-    height: 92px;
-  }
-  .heroCookies {
-    top: 88px;
-    left: 112px;
-  }
-  .heroCamera {
-    left: 0;
-  }
-  .heroSticker {
-    left: 9px;
-    bottom: 16px;
-    width: 80px;
-    height: 80px;
-    font-size: 10px;
-  }
-  .heroNote {
-    display: none;
-  }
-  .campusNav {
-    gap: 5px;
-  }
-  .campusNav button,
-  .campusNav button:nth-child(4) {
-    padding: 12px 9px;
-    font-size: 12px;
-  }
-}
-@media (max-width: 620px) {
-  .campusBanner.marketHero {
-    height: 280px;
-    min-height: 0;
-    padding: 22px;
-    border-radius: 16px;
-  }
-  .campusBanner .heroCopy {
-    width: 100%;
-    max-width: 100%;
-    align-self: flex-start;
-    gap: 10px;
-  }
-  .campusBanner strong {
-    font-size: clamp(23px, 7vw, 27px) !important;
-    white-space: normal;
-    letter-spacing: -1.3px;
-  }
-  .campusBanner .heroCopy > small {
-    display: block;
-    font-size: 12px;
-    line-height: 1.55;
-  }
-  .campusKicker {
-    font-size: 9px;
-    letter-spacing: 1.3px;
-  }
-  .heroLocation {
-    font-size: 9px;
-    margin-top: 21px;
-    max-width: 160px;
-    line-height: 1.4;
-  }
-  .campusBanner .heroCollage {
-    top: auto;
-    bottom: 7px;
-    right: 11px;
-    height: 113px;
-    width: 145px;
-  }
-  .heroOrbit {
-    width: 150px;
-    height: 150px;
-    top: -16px;
-    right: -18px;
-  }
-  .heroCamera {
-    width: 93px;
-    top: 13px;
-    left: 0;
-    padding: 5px;
-  }
-  .heroPick > img {
-    height: 67px;
-  }
-  .heroPick > span {
-    padding: 5px 2px 2px;
-  }
-  .heroPick b {
-    font-size: 8px;
-  }
-  .heroPick small,
-  .heroCookies,
-  .heroDress {
-    display: none;
-  }
-  .heroSticker {
-    width: 56px;
-    height: 56px;
-    font-size: 7px;
-    bottom: 9px;
-    left: 88px;
-    border-width: 2px;
-  }
-  .heroSticker svg {
-    width: 12px;
-    height: 12px;
-  }
-  .compactHero.campusBanner {
-    height: 102px;
-    padding: 17px;
-  }
-  .compactHero strong {
-    font-size: 22px !important;
-  }
-  .compactHero .heroCopy > small {
-    display: none;
-  }
-  .compactHero .heroCollage {
-    display: none;
-  }
-  .campusNav {
-    margin-bottom: 20px;
-    min-height: 50px;
-  }
-  .campusNav button,
-  .campusNav button:nth-child(4) {
-    padding: 10px 11px;
-    font-size: 12px;
-    flex-shrink: 0;
-  }
-  .pageHead h1 {
-    font-size: 23px;
-  }
-  .pageHead p {
-    font-size: 12px;
-  }
-  .quickCategories {
-    margin: 14px 0;
-    gap: 8px;
-  }
-  .quickCategories button {
-    padding: 9px 12px;
-    font-size: 11px;
-    gap: 6px;
-  }
-  .quickCategories svg {
-    width: 15px;
-    height: 15px;
-  }
-  .itemImage {
-    height: 155px;
-  }
-  .cardTitle strong {
-    font-size: 14px;
-  }
-  .cardFooter {
-    margin: 12px -11px -11px;
-    padding: 11px;
-  }
-  .filterDetails summary span {
-    display: none;
-  }
-}
 @media (prefers-reduced-motion: reduce) {
-  .listingCard,
+  .marketCard,
   .itemImage > img,
-  .storefrontCard,
-  .heroPick {
+  .storefrontCard {
     transition: none;
   }
-  .listingCard:hover,
-  .storefrontCard:hover,
-  .heroPick:hover {
+  .marketCard:hover,
+  .marketCard:hover .itemImage > img,
+  .storefrontCard:hover {
     transform: none;
   }
 }

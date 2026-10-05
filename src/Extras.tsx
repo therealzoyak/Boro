@@ -16,6 +16,7 @@ import {
   X,
 } from "lucide-react";
 import { demoStorage } from "./demoServices";
+import MarketplaceCard, { useSavedListings } from "./MarketplaceCard";
 import { Photo, Portrait, groupPhotos } from "./photos";
 import {
   ConditionEvidence,
@@ -148,6 +149,7 @@ type Props = {
   account: string;
   now: string;
   marketView: "rent" | "buy" | "both";
+  savedOnly: boolean;
   search: string;
   category: string;
   modeFilter: string;
@@ -566,6 +568,7 @@ export default function Extras({
   account,
   now,
   marketView,
+  savedOnly,
   search,
   category,
   modeFilter,
@@ -579,6 +582,7 @@ export default function Extras({
   setExtraCreate,
   setPage,
 }: Props) {
+  const { saved, toggle: toggleSaved } = useSavedListings(account);
   const [data, setData] = useState<Store>(() =>
     demoStorage.read(storageKey, seed),
   );
@@ -641,6 +645,7 @@ export default function Extras({
     return !g || g.privacy === "public" || g.members.includes(account);
   };
   const visibleItems = data.items
+    .filter((x) => !savedOnly || saved.includes(x.id))
     .filter(
       (x) =>
         (marketView === "both" ||
@@ -1238,56 +1243,28 @@ export default function Extras({
           </p>
           <div className="grid">
             {visibleItems.map((x) => (
-              <article className="listingCard exCard" key={x.id}>
-                <button
-                  className="itemImage"
-                  onClick={() => open("detail", x.id)}
-                >
-                  <Photo
-                    title={x.title}
-                    category={x.category}
-                    fallback={x.emoji}
-                    src={x.photos?.[0]}
-                  />
-                  <em>{modeName(x.mode)}</em>
-                </button>
-                <div className="cardBody">
-                  <div className="cardTitle">
-                    <button onClick={() => open("detail", x.id)}>
-                      {x.title}
-                    </button>
-                    <strong>
-                      {x.mode === "lease"
-                        ? `${money(x.rate)}/day`
-                        : money(x.price)}
-                    </strong>
-                  </div>
-                  <div className="meta">
-                    <MapPin size={14} />
-                    {x.zone}
-                    <span>·</span>
-                    {x.groupId
-                      ? data.groups.find((g) => g.id === x.groupId)?.name
-                      : "All UIUC"}
-                  </div>
-                  <div className="cardFooter">
-                    <button
-                      className="lender"
-                      onClick={() => openProfile(x.owner)}
-                    >
-                      {avatar(x.owner)}
-                      {people[x.owner]?.name}
-                    </button>
-                    <button
-                      className="arrow"
-                      onClick={() => open("detail", x.id)}
-                      aria-label={`View ${x.title}`}
-                    >
-                      <ChevronRight size={18} />
-                    </button>
-                  </div>
-                </div>
-              </article>
+              <MarketplaceCard
+                key={x.id}
+                id={x.id}
+                account={account}
+                title={x.title}
+                category={x.category}
+                description={x.description}
+                condition={x.mode === "service" ? undefined : x.condition}
+                photo={x.photos?.[0]}
+                owner={x.owner}
+                ownerName={people[x.owner]?.name || "Student"}
+                ownerDetail={
+                  x.mode === "service"
+                    ? businessInfo[x.owner]?.name || "Student maker"
+                    : "Illinois student"
+                }
+                zone={x.zone}
+                kind={x.mode}
+                amount={x.mode === "lease" ? x.rate : x.price}
+                onOpen={() => open("detail", x.id)}
+                onProfile={() => openProfile(x.owner)}
+              />
             ))}
           </div>
           {visibleItems.length === 0 && (
@@ -1297,6 +1274,77 @@ export default function Extras({
           )}
         </section>
       )}
+      {page === "browse" &&
+        !search &&
+        category === "All categories" &&
+        !savedOnly && (
+          <section className="campusConversations">
+            <div className="sectionHeading">
+              <div>
+                <span className="eyebrow">BEYOND THE LISTINGS</span>
+                <h2>Around campus</h2>
+              </div>
+              <button onClick={() => setPage("groups")}>
+                Find your circles <ChevronRight size={15} />
+              </button>
+            </div>
+            <div className="campusPostGrid">
+              {visibleGroups
+                .filter((g) => g.posts.length)
+                .slice(0, 2)
+                .map((g) => {
+                  const post = g.posts[g.posts.length - 1];
+                  return (
+                    <button
+                      className="campusPost"
+                      key={g.id}
+                      onClick={() => {
+                        setGroupId(g.id);
+                        setPage("groups");
+                      }}
+                    >
+                      <span className="postAuthor">
+                        {avatar(post.author)}
+                        <span>
+                          <b>{people[post.author]?.name}</b>
+                          <small>{g.name}</small>
+                        </span>
+                        <MessageCircle size={17} />
+                      </span>
+                      <p>{post.text}</p>
+                      <span className="postLink">
+                        Join the conversation <ChevronRight size={14} />
+                      </span>
+                    </button>
+                  );
+                })}
+              {activeUrgent.slice(0, 1).map((post) => (
+                <button
+                  className="campusPost requestPost"
+                  key={post.id}
+                  onClick={() => {
+                    setPage("requests");
+                    open("urgent", post.id);
+                  }}
+                >
+                  <span className="postAuthor">
+                    {avatar(post.author)}
+                    <span>
+                      <b>{people[post.author]?.name}</b>
+                      <small>Campus help board</small>
+                    </span>
+                    <Clock3 size={17} />
+                  </span>
+                  <p>{post.title}</p>
+                  <span className="postLink">
+                    See request · budget {money(post.budget)}{" "}
+                    <ChevronRight size={14} />
+                  </span>
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
       {page === "services" && (
         <section className="extraPage servicePage">
           <div className="pageHead">
@@ -3113,21 +3161,16 @@ export default function Extras({
                     <button
                       className="btn subtle"
                       onClick={() => {
-                        update((d) => ({
-                          ...d,
-                          saved: d.saved.includes(item.id)
-                            ? d.saved.filter((i) => i !== item.id)
-                            : [...d.saved, item.id],
-                        }));
+                        toggleSaved(item.id);
                         notify(
-                          data.saved.includes(item.id)
+                          saved.includes(item.id)
                             ? "Removed from saved"
                             : "Item saved",
                         );
                       }}
                     >
                       <Bookmark size={15} />
-                      {data.saved.includes(item.id) ? "Saved" : "Save"}
+                      {saved.includes(item.id) ? "Saved" : "Save"}
                     </button>
                   </div>
                 </>

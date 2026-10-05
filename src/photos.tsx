@@ -97,12 +97,20 @@ export function Photo({
     />
   );
 }
-export function Portrait({ id, name }: { id: string; name: string }) {
+export function Portrait({
+  id,
+  name,
+  decorative = false,
+}: {
+  id: string;
+  name: string;
+  decorative?: boolean;
+}) {
   const [failed, setFailed] = useState(false);
   return !failed && portraits[id] ? (
     <img
       src={portraits[id]}
-      alt={`${name} · sample profile photo`}
+      alt={decorative ? "" : `${name} · sample profile photo`}
       style={{
         objectPosition: "50% 30%",
         transform: id === "leo" ? "scale(1.6)" : "scale(2.1)",

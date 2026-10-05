@@ -40,4 +40,4 @@ Boro bundles stock photos from Pexels. Photos illustrate fictional items and pro
 
 ## Fonts
 
-DM Sans and Manrope are bundled from their Fontsource packages under the SIL Open Font License. License texts are included in `public/fonts/`.
+DM Sans, Manrope, and Bricolage Grotesque are bundled from their Fontsource packages under the SIL Open Font License. License texts are included in `public/fonts/`.
