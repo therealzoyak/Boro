@@ -1274,9 +1274,14 @@ function App() {
           <span className="demoTag">Demo campus</span> Sample students and
           listings · verification and payments are simulated.
         </span>
-        <button onClick={resetDemo}>
-          <RotateCcw size={14} /> Reset demo
-        </button>
+        <div className="demoActions">
+          <a href="https://boro-feedback.therealzoyak.chatgpt.site" target="_blank" rel="noreferrer">
+            <MessageCircle size={14} /> Share feedback
+          </a>
+          <button onClick={resetDemo}>
+            <RotateCcw size={14} /> Reset demo
+          </button>
+        </div>
       </div>
       <div className="shell">
         <main className="main">
@@ -1907,6 +1912,15 @@ function App() {
               />
             </>
           )}
+          <aside className="demoFeedback" aria-label="Help shape Boro">
+            <div>
+              <h2>Your campus take matters.</h2>
+              <p>What would make you use Boro? Tell us what worked, what felt off, or what you’d want next.</p>
+            </div>
+            <a className="btn primary" href="https://boro-feedback.therealzoyak.chatgpt.site" target="_blank" rel="noreferrer">
+              <MessageCircle size={17} /> Share feedback
+            </a>
+          </aside>
           <footer className="marketFooter">
             <span>Boro · Made for the Illinois campus community</span>
             <div>

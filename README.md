@@ -10,6 +10,7 @@
   <strong><a href="https://therealzoyak.github.io/Boro/">Explore the live demo</a></strong>
   · <a href="#try-the-demo">Demo walkthrough</a>
   · <a href="TECH_STACK.md">Architecture</a>
+  · <a href="https://boro-feedback.therealzoyak.chatgpt.site">Share feedback</a>
 </p>
 
 ![Boro's UIUC marketplace, with student listings and borrowing options](docs/images/marketplace.png)
@@ -20,7 +21,7 @@ A camera for a class project. A dress for one formal. A projector for a club mov
 
 Boro brings those exchanges into one UIUC campus marketplace: browse an item, agree on dates and pickup, or request a service directly from a student storefront.
 
-Built by a **team of four** for the **Hack to the Future** hackathon, responding to **“Back to the Basics.”**
+Built by a **team of four**, **Back to the Basics**, for Product Space UIUC’s **Hack to the Future** hackathon and its accessibility prompt.
 
 ## What you can explore
 
@@ -70,6 +71,12 @@ Open **[therealzoyak.github.io/Boro](https://therealzoyak.github.io/Boro/)**. No
 4. Visit **Services** to request a cookie box or photo session. Explore **Groups & clubs** and the **Help board** for the community flows.
 
 **Reset demo** restores the sample listings and clears your demo activity and filters.
+
+### Help shape Boro
+
+Use **Share feedback** at the top of the demo, or open the [feedback form](https://boro-feedback.therealzoyak.chatgpt.site). No account or name is required. Tell us what worked, what needs fixing, or what would make you use Boro on campus.
+
+Feedback is saved in a separate private database, with the submission time, feedback category, optional interest response, and message. It is not stored in the marketplace’s browser-local demo data. The project owner can review responses in the **BORO · Share feedback** Site’s Settings database viewer, or request a response summary through ChatGPT. Responses are not displayed publicly.
 
 > **Prototype scope:** Boro is an interactive front-end prototype, not an operating marketplace. Data and uploaded photos stay in the current browser's `localStorage`; messages are not shared between visitors. Student identities, reviews, memberships, verification badges, payments, deposits, and transaction history are fictional or simulated. No university credentials are collected and no money is charged. Private-group visibility is a demo behavior, not server-enforced access control.
 
