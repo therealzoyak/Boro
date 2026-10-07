@@ -1,8 +1,6 @@
 <p align="center">
-  <img src="public/boro-wordmark.svg" alt="Boro" width="220" />
+  <img src="public/og-image.png" alt="Boro: Borrow More. Own Less. A verified, UIUC-only marketplace where students borrow, buy, and book services from each other." />
 </p>
-
-<h3 align="center">Borrow More. Own Less.</h3>
 
 <p align="center">
   A campus marketplace for borrowing, buying, and booking student services.
